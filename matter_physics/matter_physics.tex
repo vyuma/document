@@ -1,0 +1,169 @@
+\documentclass[titlepage]{ltjsarticle}
+% ページスタイル
+\pagestyle{headings}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 数式
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{derivative}
+% 式番号を途中でふらない(参照するものだけ参照する)
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+% 数式をすべてdisplaystyleにする。
+\everymath{\displaystyle}
+\usepackage{bookmark}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% mysimpleboxの設定
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newtcolorbox{mysimplebox}[1]{%
+colframe=black,colback=white,
+coltitle=black,colbacktitle=white,
+boxrule=0.8pt,arc=0mm,
+fonttitle=\sffamily\bfseries,
+enhanced,
+attach boxed title to top left={xshift=10mm ,yshift=-3mm},
+boxed title style={frame hidden},
+title=#1}
+% Pythonでのグラフ描画をインポートするために必要なパッケージ
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\section{第二回}
+\subsection{自由電子}
+シュレディンガー方程式は、
+\begin{equation}
+    \left( -\frac{\hbar^2}{2m} \nabla^2 + V \right) \psi = i\hbar \frac{\partial \psi}{\partial t}
+\end{equation}
+となるが、ここで、一次元自由電子で\(V=0\)としよう。
+
+ｋぉの時には、
+\begin{equation}
+    - \frac{\hbar^2}{2m} \pdv[order=2]{}{x} = \varepsilon \psi 
+\end{equation}
+となるから、\(\psi = e^{\phi x}\)と置いて代入することが出来る。
+ここから、
+\begin{equation}
+  p^2 = - \frac{2m \varepsilon}{\hbar^2}
+\end{equation}
+となることがわかる。
+この時には、
+\begin{equation}
+  \varepsilon = \frac{\hbar^2 k^2}{2m}
+\end{equation}
+となることにより、
+\begin{equation}
+  \psi = A e^{ikx} + B e^{-ikx}
+\end{equation}
+となることがわかる。
+
+この時には、運動量演算子の固有状態としては、
+\begin{equation}
+  \hat{\phi} = \frac{\hbar}{i} \pdv{}{x}
+\end{equation}
+となるときに、\(e^{ikx}\)が固有状態であり、\(\phi=\pm \hbar k\)となる。
+この時の解は、エネルギーを\(\frac{\hbar^2 k^2}{2m}\)であり、運動量を\(\pm \hbar k\)となる。
+\begin{equation}
+  Ae^{ikx} 
+\end{equation}
+
+\subsection{周期的境界条件（Priodic Boundary Condition）}
+物質はどんな形状でも同じような物性を持つことが出来る経験則がある。そこから考えると、間隔\(a\)の原子の列について考えることが出来て、
+十分大きな数\(N \)に対して、
+\begin{equation}
+  \psi(x+Na) = \psi(x)  
+\end{equation}
+となることがわかる。この時には\(10^{22}\)個くらいの原子が入っている。沢山のものが入っているものをバルクという。\(1 \mathrm{cm^3}\)の中の原子数は\(10^{22}\)個くらいである。このような十分小さいが多数の原子が存在するようなものである。
+この\(N\)は人工的であるから、この量が最終的な結果に影響してはいけない。
+そこで、\(N=10^{10}\)くらいだと、スターリングの近似が使える。\(Na\ll 1\mathrm{\mu m}\)くらいの大きさになることを仮定しよう。
+\footnote{ここから考えると、三次元の境界条件は四次元で考えなければならない。}
+波動関数の主規制を考えると、\(L=Na\)より、\(A= \frac{1}{\sqrt{L}}\)になる。
+
+さて、\(\phi(x+Na)=\psi(x)\)に対して、\(\psi=\frac{1}{\sqrt{L}}e^{ikx}\)を代入した。
+この時に、これを、
+\begin{equation}
+  \frac{1}{\sqrt{L}} e^{ik(x+Na)} = \frac{1}{\sqrt{L}} e^{ikx}
+\end{equation}
+より、\(e^{ikNa}=1\)となることにより、
+\begin{equation}
+  kNa = 2\pi n 
+\end{equation}
+となり、\(k=\frac{2\pi n}{Na }\)となることにより、連続な\(k\)が不連続になる。
+連続の\(k\)の場合は非常に難しい。
+
+
+\subsection{一次独立な解}
+いま世界を\(N\)で区切った、そこの中の一次独立の解は必ず\(N\)個あると考える。
+この時には、原子上に1個電子がいるとする、波動関数は一独立なものは\(N\)個あると考えられる。
+正規直交規定系を考えると、別物ものを考えることが出来る。\(k\)もまた一次独立な数は\(N\)個である。つまり異なる\(N\)個が存在するということである。そこで、\(N\)は\(-\frac{N }{2}\)から\(\frac{N}{2}\)のようにとる方がきれいである。ただし、\(n\)が連続してとることが出来ればいいので、どのような区間でとってもいい。
+
+波数\(k\)について\(0<n<N \)のように\(n\)をとったとして、\(0<k<\frac{2\pi N}{Na}=\frac{2 \pi}{a}\)となる。
+
+もしくは、\(-\frac{N }{2}<k < \frac{N}{2}\)について、\(-\frac{\pi}{a}< k < \frac{\pi}{a}\)これを第一ブリルアンゾーンという。これをここからは採用しよう。
+
+さてここから、\(\varepsilon=\frac{\hbar^2 k^2}{2m}\)の時に、この第一ブリルアンゾーンを超えた場合はどのようにすればいいのか？はみ出した場合はどうなるのか？を考える必要がある。
+
+実は今まで\(N\)しか使わなかった。そこで、次の問題はこのはみ出す場合の問題を考えることが必要である。
+はみ出す場合には、\(2N\pi/a\)だけ平行移動することが出来れば、\(k\)をブリルアンゾーンについて考えることが出来る。
+
+\subsection{空格子近似}
+間隔\(a\)で原子が並んでいるが、ポテンシャルは無視できるほど小さい。
+本来原子がある場所がポテンシャルを持たないとして、仮想的に原子が存在しないとして考えることが出来る。
+
+\(a\)の繰り返し構造だけが存在する。任意の長さに対する並進対称性が存在したが、それを短い量である\(a\)に対する対称性がある。この\(a\)に対する並進を行う演算子を\(\hat{T}\)としよう。
+これは、ある関数\(f\)に対して、
+\begin{equation}
+  \hat{T} f(x) = f(x+a)
+\end{equation}
+となり、\(\hat{H},\hat{T}\)は可換である。つまり同時に固有状態になるような状態を探そう！！
+つまり、まずは\(\hat{T}\)の固有状態を探しにいく。
+\(\varphi_k(x)\)とすると、
+\begin{equation}
+  \hat{T} \varphi_k(x) = \varphi_k(x+a)
+\end{equation}
+となることから、\(\varphi_k(x)=\frac{1}{\sqrt{L}}e^{ikx}\)を入れるとすると、
+\begin{equation}
+  \hat{T} \varphi_k(x) = \varphi_k(x+a) = \frac{1}{\sqrt{L}} e^{ik(x+a)} = e^{ika} \varphi_k(x)
+\end{equation}
+となる。
+ここから、\(K\)を探そう。
+すると、
+\begin{equation}
+  e^{ika} = e^{i(k+K)a}
+\end{equation}
+となり、\(e^{ika}=1\)となり、\(K_m= \frac{2 \pi}{a}m\)となる。つまり、\(\varphi_k,\varphi_{k+K_m}\)は同じ\(e^{ika}\)を与える。おなじ固有値を与える波動関数があるということは縮退しているということである。
+
+
+縮退しているところが折り返されるということは実験的に示されている。\footnote{
+  ノート参照する
+}
+
+\(\varepsilon = \frac{\hbar^2 k^2}{2m}\)と、\(\varepsilon = \frac{\hbar^2(k\pm K_1)^2}{2m}\)のグラフは、放物線が\(\frac{2\pi}{a}\)周期から導かれることがわかる。
+
+固体では\(a\)の周期であるのに対して、波数は\(\frac{2\pi}{a}\)における周期であり、\(k_m\)は逆格子になる
+
+\subsection{まとめ}
+\paragraph{まとめ}
+\begin{description}
+  \item[PBC] 一次独立な\(k\)が決まるのが第一BZである
+  \item[格子定数] 格子定数\(a\)があり、\(\hat{T}f(x)= f(x+a)\)となる。
+  \item[波数] \(\frac{2\pi}{a}\)の周期としては逆格子である。
+\end{description}
+
+
+
+
+
+
+
+
+
+
+\end{document}

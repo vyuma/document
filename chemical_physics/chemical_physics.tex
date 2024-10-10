@@ -1,0 +1,236 @@
+\documentclass{ltjsarticle}
+% ページスタイル
+\pagestyle{headings}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 数式
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{derivative}
+% 式番号を途中でふらない(参照するものだけ参照する)
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+% 数式をすべてdisplaystyleにする。
+\everymath{\displaystyle}
+\usepackage{bookmark}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% mysimpleboxの設定
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newtcolorbox{mysimplebox}[1]{%
+colframe=black,colback=white,
+coltitle=black,colbacktitle=white,
+boxrule=0.8pt,arc=0mm,
+fonttitle=\sffamily\bfseries,
+enhanced,
+attach boxed title to top left={xshift=10mm ,yshift=-3mm},
+boxed title style={frame hidden},
+title=#1}
+% Pythonでのグラフ描画をインポートするために必要なパッケージ
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\title{化学物理学}
+\author{名古屋大学理学部　槇　瓦介}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\section*{オリエンテーション}
+% 教員紹介
+\begin{mysimplebox}{教員紹介}
+\begin{itemize}
+\item 担当教員: 槇　瓦介
+\item メールアドレス: maki.koske.v8@f.mail.nagoya-u.ac.jp
+\item 連絡先:
+\item オフィス
+\item オフィスアワー:
+\end{itemize} 
+\end{mysimplebox}
+メッセージを送る際にはメッセージの優先度を必ず高にしてください。
+そのメッセージが遅れない可能性があります。
+
+取り下げの場合は、制度適用
+
+レポートを提出してください。未提出ではWになります。
+
+
+\part{化学平衡(equibrility)}
+巨視的にはもはや動かないもの
+\section{熱力学の復習（一成分系）}
+平衡状態が別の平衡状態に至るのだが、その過程はどのような操作をしてもいい。
+
+統計力学の正当性は熱力学によるものである。熱力学は私たちの経験と合致する。
+これが熱力学である。
+
+なるべく一本道で考えられるようにする。
+\subsection{平衡状態（equilibirium status eg status）における系の記述}
+平衡状態をeq状態と略記することがある。
+
+対象とする系としては、何らかに仕切られた系のことである。
+\begin{description}
+  \item[単純な系] 内部の仕切りなし（内部束縛壁無し）の系を考える。
+  \item[複合系]  複数の単純系の組み合わせである。
+\end{description}
+系の記述は示量変数である体積\(V\)と物質量\(N\)で行う。
+二個並べたら二倍になる量のことである。
+\(X=(V,N)\)としよう。
+
+環境とは熱力学的な系とする。
+
+\begin{description}
+  \item[前提1] ある環境と壁が存在する。この時に長時間経つと環境に依存して、系の状態が変化することがある。
+長時間経つと環境に依存してeq状態に（時間がたっても系の巨視的な性質不変）同じ環境下のeq状態は\(X\)（示量変数の組）で決まる。
+  \item[前提2] 環境を特徴づける示強変数:温度\(T\)の存在する。\((T:X)\rightarrow \)eq状態を決める。
+  \item[前提3] ある種類のの壁が存在し（断熱壁）が存在すれば、長時間で平行状態になる。しかしその平行状態は環境の影響を受けない。（isolated） 系のT:系の初期状態で決まる
+\end{description}
+
+熱力学的な系の外にはマクロな力学系（外界）が存在する。
+外からの操作から仕事を測定することが可能である。（例えば、壁を動かすこととか、壁の挿入や除去や流体の混合等）
+温度制御を接触させることや断熱壁で囲むことが出来る。
+
+系があり、環境があるだけではなかなか難しい。
+典型的には、ピストンなどがついているとかを考える。
+
+詳細の記述が必要か？というと、仕事を測定することが出来る。
+とりもなおさず、測定可能になる。
+壁を動かす必要がある。
+
+壁を入れたり出したりすることが出来る。
+これは壁に対して挿入や除去には仕事いらない。夏力学的な極限を考えると\(L^2\ll L^3\)より、仕事を無地できる。
+
+
+
+
+\subsubsection{状態変数}
+状態が決まるときに状態変数がきまる。
+示量変数（エネルギー、\((U,V)\)）と示強変数についての相加性がある。共通部分がないようにしてあげると、
+\begin{equation}
+  X(A+B) = X(A)+X(B)
+\end{equation}
+となる。
+示量性があるときには、
+\begin{equation}
+  X(T;\lambda V, \lambda N) = \lambda X(T;V,N)
+\end{equation}
+となる。
+
+示強変数とは、
+\begin{equation}
+  X(T;\lambda V , \lambda N) = X(T;V,N)
+\end{equation}
+となる。
+
+過程としては、し状態と操作がありそのあとの状態から、始状態と終状態がある。
+
+\subsubsection{等温過程}
+等温過程では、\((T;V,N)\xrightarrow{i} (T;V,N)\)となり、等温環境下での過程である。
+
+等温過程下では、力学的操作と熱浴との接触が存在する。
+力学的過程であれば可能な操作であるならば何でもありである。
+
+\subsubsection{断熱過程}
+断熱過程では、\((T;V,N)\xrightarrow{ad} (T;V,N)\)となり、断熱環境下での過程である。
+
+\subsubsection{広義の等温過程(extended isothermal process)}
+\((T;V,N)\xrightarrow{ex} (T;V',N)\)となり、等温環境下での過程である。
+温度\(T\)の環境下で、透熱とする。断熱壁をかぶせ断熱のまま操作をしよう。そのあとに、断熱壁をとり、\(T\)の等温環境下においておく。すると仮想的には等温での過程になる。
+
+\subsubsection{準静的(guasistatic)過程}
+状態が持続する過程のことをいう。平衡状態に近い状態間の一連の過程のことを「準静的過程」という。
+これは、
+\begin{equation}
+  (T;V,N) \xrightarrow{qs} (T';V',N)
+\end{equation}
+となることがわかる。
+
+逆の操作によって終状態から始状態に戻れる。
+平衡状態から平衡状態への詳細について面倒を見るわけではない。
+ものの量を一定にすることが出来る
+
+で、系が外界にする仕事としては、
+\begin{equation}
+  W[(T;V,N)\xrightarrow{qs} (T';V',N)] = -\int_{(T;V,N)}^{(T';V',N)}dW
+\end{equation}
+と書くことができる。
+
+系に流れる熱の量は、
+\begin{equation}
+  Q[(T;V)\xrightarrow{qs} (T';V')] 
+\end{equation}
+
+このようにどのような過程を通ったか？によって、仕事が変化する。つまり、過程によって仕事が変わる。
+
+特に、
+\begin{equation}
+  (T,V)\xrightarrow{qs} (T+\varDelta T,V+\varDelta V)
+\end{equation}
+のような微小過程であり圧力が定義され続けている場合には、
+\begin{equation}
+  W[(T,V) \xrightarrow{qs} (T+\varDelta T,V+\varDelta V)] \simeq P\varDelta V
+\end{equation}
+このような場合には、準静的過程となり、さらに逆をたどることが出来る。
+\begin{equation}
+  W_S[(T',V')\xrightarrow{qs}(T,V)] = -W[(T,V)\xrightarrow{qs}(T',V')]
+\end{equation}
+のように負号が反対になったものになる。
+
+\subsection{流体の熱力学的性質}
+\begin{description}
+  \item[前提4] 刑を構成する流体について、平衡状態における圧力\(P\) が\((T;V,N)\)で決まると仮定する。
+  \item[前提5] 系を構成する流体に対して、定積熱容量が定まると仮定する。
+\end{description}
+\subsubsection{状態方程式}
+
+
+\begin{equation}
+  P = P(T;,V,N) 
+\end{equation}
+となり、理想気体の場合には、\(P= \frac{NRT}{V}\)となり、
+
+\subsubsection{定積熱容量}
+定積熱容量は、系と熱浴との接触によって、生じる\(T\)変化を考える。
+
+
+系から熱\(Q\)が流れたとする。このときに、\(V,N\)が一定で、\(T\to T+ \varDelta T\)となるときに必要な\(Q\)を定積熱容量\(C_V\)となる。理想気体の時の例としては、\(c\)を定数として、
+\begin{equation}
+  C_V(T;V,N) = cNR
+\end{equation}
+熱の定義は温度が上がったら熱が流れたということにする。熱というのはエネルギーの流れであるというスタンスで記述している。
+
+
+\subsection{熱力学の第一法則}
+\subsubsection{仕事と熱の等価性}
+仕事と熱であり、比例同じ量の異なる表現であり、エネルギーの流れとしての等価性がある。
+
+
+
+
+
+\part{科学反応速度論(kinetics)}
+
+
+
+
+\part{原子分子の構造とその周辺}
+どんな対称性があるか？についての論
+
+
+% 参考文献
+\begin{thebibliography}{9}
+\bibitem{1} マッカリー・サイモン「物理化学」
+\bibitem{2} アトキンス「物理化学」
+\bibitem{3} Charles R Catntor Paul R Schimmel Biological Chemistry W.F.Freeman Co 
+\bibitem{4} 佐々 「熱力学」
+\end{thebibliography}
+
+
+\end{document}

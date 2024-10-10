@@ -1,0 +1,430 @@
+\documentclass[titlepage]{ltjsarticle}
+% ページスタイル
+\pagestyle{headings}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 数式
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{derivative}
+% 式番号を途中でふらない(参照するものだけ参照する)
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+% 数式をすべてdisplaystyleにする。
+\everymath{\displaystyle}
+\usepackage{bookmark}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% mysimpleboxの設定
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newtcolorbox{mysimplebox}[1]{%
+colframe=black,colback=white,
+coltitle=black,colbacktitle=white,
+boxrule=0.8pt,arc=0mm,
+fonttitle=\sffamily\bfseries,
+enhanced,
+attach boxed title to top left={xshift=10mm ,yshift=-3mm},
+boxed title style={frame hidden},
+title=#1}
+% Pythonでのグラフ描画をインポートするために必要なパッケージ
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\title{統計力学Ⅲ}
+\author{大成誠一}
+\date{\today}
+\maketitle
+
+
+簡単な小テストを毎回行う。時間があれば期末試験だけで行う。必修ではないので期末試験を受けなければ欠席扱いになる。
+参考図書もシラバスにあるので
+
+\section*{復習}
+\subsection{グランドカノニカル分布}
+開いた系の統計分布のことを開放系ともいい、外界とエネルギー、粒子のやりとりをおこなう系
+
+対象とする開いた系Aと対象とする開いた系Bを考える。ここでAとBの相互作用は無視する。
+この時にAとBを合わせた全系について考えるとそれが熱平衡になる。
+この時に全系はミクロカノニカル分布になる。
+
+系AがA粒子数がNでエネルギーがEだとする。
+系Bが粒子数が\(N\)で、系が\(N_B\)だとする。エネルギーが\(E_B\)である。
+全系は\(N+N_B=N_T\)となり、エネルギーは\(E+E_B=E_T\)となる。
+
+ここで等確率の原理とはミクロカノニカル分布に従う全系の量子状態はすべて等しい確率で実現する。
+エネルギーが一緒ならば同時に存在することが出来る。
+
+Aが粒子数\(N\)で、エネルギー\(E\)の一つの量子状態にある確率を\(P(N,E)\)とする。
+このとき、Bは粒子数\(N_T-N\)で、エネルギー\(E_T-E\)の量子状態にありその場合の数を
+\(W_B(N_T-N,E_E-E)\)とすると、
+等確率の原理から考えると
+\begin{equation}
+  P(N,E) \propto W_B(N_T-N,E_T-E)
+\end{equation}
+となる。
+
+Bのエントロピーを\(S_B\)とすると、
+\begin{equation}
+  S_B = k\log W_B(N_B,E_B)
+\end{equation}
+となる。
+依って、
+\begin{equation}\label{eq:0.1}
+  p(N,E) \propto \exp\left( \frac{1}{k_B}S_B(N_T-N,E_T-E) \right)
+\end{equation}
+となる。
+外界BはAよりも十分大きいとして、
+\begin{equation}
+  N \ll N_T  ,\quad E \ll E_T
+\end{equation}
+となるために、
+\begin{align}
+  S_B (N_T-N,E_T-E) &= S_B(N_T,E_T) - \left( \frac{\partial S_B}{\partial N} \right)_{E_T}N - \left( \frac{\partial S_B}{\partial E} \right)_{N_T}E \\
+  &  = S_B(N_T,E_T)  + \frac{\mu}{T} N - \frac{E}{T}
+\end{align}
+となる。
+ここから、
+\begin{equation}
+  G = N@m  = U + PV - TS
+\end{equation}
+となり、
+\begin{equation}
+  S = \frac{U+PV-N \mu}{T}
+\end{equation}
+を用いた。よって、式\eqref{eq:0.1}より、\(p(N,E)\propto \exp\left( -\frac{1}{k_BT}(E-\mu N) \right)\)となる。規格化して、
+\begin{equation}
+  p(N,E) = \frac{1}{\Xi} \exp\left( -\frac{1}{k_BT}(E-\mu N) \right)
+\end{equation}
+として、大分配関数\(\Xi = \sum_N \sum_n \exp \left( -\frac{1}{k_BT} \left( E_n(N)-\mu N \right) \right)\)である。
+この時に、\(E_n(N)\)は\(N\)粒子系の\(n\)番目のエネルギーである。
+
+また分配関数
+\begin{equation}
+  Z_N = \sum_n \exp \left( -\frac{1}{k_BT}E_n(N) \right)
+\end{equation}
+となる。
+この時に、
+\begin{equation}
+  \Xi = \sum_N \exp \left( \frac{\mu N}{k_BT} \right)Z_N = \sum_N \lambda^N Z_N
+\end{equation}
+となる。絶対活動度を\(\lambda = \exp \left( \frac{\mu}{k_BT} \right)\)とする。
+
+一方粒子数は、
+\begin{equation}
+  \ev{N} = \frac{\sum_N N \lambda^N Z_N}{\sum_N \lambda^N Z_N} = \lambda \pdv{}{\lambda} \log \Xi
+\end{equation}
+となる。
+またグランドポテンシャルは、
+\begin{equation}
+  \Omega = -k_BT \log \Xi
+\end{equation}
+となれば、\(\ev{N} = - \pdv{\Omega}{\mu}\)とも書ける。
+
+ここで\(\Omega\)と熱力学との関係は？
+そこで、\(\log \Xi\)を全微分してみよう！
+この時の前提はAが開放系であるという設定のみ残っている。
+\begin{align}
+  \odif{(\log \Xi)} & = \sum_N \sum_n - \frac{N \mu-E_n(N)}{k_BT^2} \odif{T} \exp\left[ -\frac{E_n-N\mu}{k_BT} \right]\frac{1}{\Xi}  + \sum_N \sum_n \frac{\odif{(N\mu)}-\odif{(E)}_n(N)}{k_BT} \exp \left[ -\frac{E_n-N\mu}{k_BT} \right]\frac{1}{\Xi}\\
+  & = -\frac{\ev{N}\mu}{k_BT^2} \odif{T} + \frac{\ev{E}}{k_BT^2}\odif{T} + \frac{\ev{\odif{(N\mu)}}}{k_BT} - \frac{\ev{\odif{E}}}{k_BT}\\
+  & = \odif{\left( \frac{N \mu}{k_BT} \right)} + \frac{U}{k_BT^2} \odif{T} - \frac{\odif{'w}+\mu \odif{N}}{k_BT} \label{eq:0.2}
+\end{align}
+となる。ここで、\(\ev{E}=U\)と、\(\ev{\odif{E}}= \odif{'w}+ \mu \odif{N}\)を用いた。
+ここで、\(\odif{E}_n(N)\)は\(N\)が一定の時に、エネルギー準位の変化なのでばね定数の変化等に対応する。
+その平均値は加えられた仕事\(\odif{'W}\)に相当する。
+一方\(N\)が変化するときには\(U\)の粒子数による変化\(\mu \odif{N}\)に対応する。
+
+一方\(G=N\mu = U + PV - TS\)となるので、
+\begin{align}
+  \odif{\left( \frac{PV}{T} \right)} & = \odif{\left( \frac{G}{T} \right)} = 
+  \odif{\left( \frac{N\mu}{T} \right)} - \odif{\left( \frac{U}{T} - S \right)} \\
+  & = \odif{\left( \frac{N \mu}{T} \right)} + \left( \frac{U}{T^2} \right)\odif{T} - \frac{\odif{'w}+ \mu\odif{N}}{T} 
+\end{align}
+となる。\eqref{eq:0.2}と比較して、
+\begin{equation}
+  \Omega = -k_BT \ln \Xi = -PV = F-G 
+\end{equation}
+となる。ここで、\(\odif{'w}= -P \odif{V}\)となる。
+一般化した力\(X_i\)による仕事は、
+\begin{equation}
+  \odif{'w} = \sum_i X_i \odif{x_i}
+\end{equation}
+となり、
+\begin{equation}
+  G = F - \sum_{i} X_i x_i 
+\end{equation}
+となる。
+
+この時、一般化した仕事で考えると、
+\begin{equation}
+  \Omega = \sum_i X_ix_i 
+\end{equation}
+となる。
+
+さらに、
+\begin{equation}
+  \Omega = F -G = F - \mu N 
+\end{equation}
+ここでは、\(N\)依存性から\(\mu\)依存性に変化したルジャンドル変換であるので、
+\begin{equation}
+  \odif{\Omega} = -S \odif{T} - P \odif{V} - N \odif{\mu}
+\end{equation}
+となる。
+
+\subsubsection*{応用篇}
+\(N\)粒子の理想気体は、
+分配関数から、考えると分配関数\(Z_N\)となり、
+\begin{equation}
+  Z_N = \frac{1}{N!h^{3N}} \int \cdots \int \exp \left( - \frac{E}{k_BT} \right) \odif[order=3N]{k} \odif[order=3N]{q}
+\end{equation}
+となることがわかる。ここで、\(E = \frac{1}{2m}\sum^{N}_{k=1}(k^2_{ix}+k^2_{iy}+k^2_{iz})\)となる。
+\begin{equation}\label{eq:0.3}\label{eq:0.3}
+  Z_N = \frac{V^N}{N!h^{3N}} \left( 2 \pi m k_BT \right)^{\frac{3N}{2}}
+\end{equation}
+となる。
+
+
+\paragraph{問題}
+\(\lambda=e^{\frac{\mu}{k_BT}}\)となるとき、
+\begin{align}
+  \Xi &= \sum_N^{\infty} \lambda^{N} Z_N \\
+      & = \sum_{N=0}^{\infty}\frac{1}{N!} \left[ \frac{V}{h^3}(2\pi m k_BT )^{\frac{3}{2}}\lambda \right]^N \\
+      & = \exp \left[ \frac{V}{h^3}(2\pi m k_BT )^{\frac{3}{2}}\lambda \right]\\
+      \frac{PV}{k_BT} & = \ln \Xi \\
+      & = \frac{V}{h^3}(2 \pi m k_B T)^{\frac{3}{2}}\lambda
+\end{align}
+となる。よって、
+\begin{equation}
+  N = \lambda \pdv{}{\lambda} \ln \Xi = \frac{PV}{k_BT}  
+\end{equation}
+より状態方程式が得られる。
+
+
+\subsection{粒子数の揺らぎと等温圧縮率}
+大分配関数\(\Xi\)となり、
+\begin{equation}
+  \Xi = \sum_{N=0}^{\infty}\lambda^N Z_N 
+\end{equation}
+となり、\(\lambda=e^{\frac{\mu}{k_BT}}\)に対して、
+\begin{align}
+  \left( \pdv{\ln \Xi}{\mu} \right) & = \frac{1}{\Xi} \sum_N \frac{N}{k_BT}\lambda^N Z_N\\
+  & = \frac{1}{k_BT} \ev{N} 
+\end{align}
+となる。
+さてさらにもう一度微分してあげると、
+\begin{align}
+  \left( \pdv[order=2]{\ln \Xi}{\mu} \right)_{T,N} &= \frac{1}{\Xi}\left( \frac{N}{k_BT} \right)^2 \sum_N \lambda^N Z_N - \left( \frac{1}{\Xi} \sum_N \frac{N}{k_BT}\lambda^N Z_N \right)^2\\
+  & = \frac{1}{(k_BT)^2} \left( \ev{N^2} - \ev{N}^2 \right)
+\end{align}
+のような分散のような関係を得ることが出来る。
+依って、
+\begin{align}\label{eq:0.4}
+  \left(\pdv{\ev{N}}{\mu}\right)_{T,V} & = \beta (\ev{N^2} - \ev{N}^2)\\
+  & = \beta (\varDelta N)^2
+\end{align}
+となる。ここで、\(\beta = \frac{1}{k_BT}\)とし,\(\varDelta N = \sqrt{\ev{N^2} - \ev{N}^2}\)とした。
+さて、統計力学のアプローチを考えた。
+
+さてここからは熱力学からどう考えるか？について考察する。
+熱力学から、
+\begin{equation}
+  G = N \mu(P,T)
+\end{equation}
+であることがわかる。これを微分すると、
+\begin{equation}
+  \odif{G} = N \odif{\mu} + \mu \odif{N}
+\end{equation}
+と書くことができる。また、
+\begin{equation}
+  \odif{G} = -S \odif{T} - V \odif{P} + \mu \odif{N}
+\end{equation}
+となる。
+
+また、\(\odif{G}= -S \odif{T} +V \odif{P} + \mu \odif{N}\)と合わせて、Gibbs-Duhemの関係式が得られる。
+\begin{equation}
+  N \odif{\mu} + S \odif{T} - V \odif{P} = 0
+\end{equation}
+
+さらにこの式から、
+\begin{equation}
+  N \left( \pdv{\mu}{V} \right)_{T,N} =V\left( \pdv{P}{V} \right)_{T,N}
+\end{equation}
+と
+\begin{equation}
+  \left( \pdv{P}{\mu} \right)_{T,V} = \frac{N}{V}
+\end{equation}
+という関係式が得られる。
+
+またヘルムホルツの自由エネルギーの関係の式から、
+\begin{equation}
+  \pdv{F}{N,V} = \pdv{F}{V,N} 
+\end{equation}
+から、\(\odif{F}= -S \odif{T} -P \odif{V} + \mu \odif{N}\)に対して、
+\begin{equation}
+  \left( \pdv{\mu}{V} \right)_{T,N} = - \left( \pdv{P}{N} \right)_{T,V} = - \left( \pdv{P}{\mu} \right)_{T,V}\left( \pdv{\mu}{V} \right)_{T,V}
+\end{equation}
+となることがわかる。
+
+上の二式と合わせることにより、
+\begin{equation}
+  \left(\pdv{\mu}{V}\right)_{T,V} = - \frac{V^2}{N^2}\left( \pdv{P}{V} \right)_{T,N}
+\end{equation}
+となる。
+
+これをまとめると、\(  \left( \pdv{\mu}{V} \right)_{T,N} = - \left( \pdv{P}{N} \right)_{T,V} = - \left( \pdv{P}{\mu} \right)_{T,V}\left( \pdv{\mu}{V} \right)_{T,V}\)を用いて、
+\begin{equation}
+  \left(\pdv{N}{\mu}\right)_{T,V} = - \frac{N^2}{V^2}\left( \pdv{V}{P} \right)_{T,N}
+\end{equation}
+となる。
+
+依って、式\eqref{eq:0.4}より、
+\begin{equation}
+  -\frac{N^2}{V^2} \left( \pdv{V}{P} \right)_{T,V} = \beta (\varDelta N)^2
+\end{equation}
+となる。ここで等しい等温圧縮率\(\kappa_T = - \frac{1}{V}\left( \pdv{V}{P} \right)_{T,N}\)を用いることにより、
+\begin{equation}
+  \pdv{(\varDelta N)^2}{N} = \frac{Nk_BT}{V}\kappa_T 
+\end{equation}
+となることがわかる。
+
+理想気体の時考えると、
+\begin{equation}
+  \kappa_T = -\frac{1}{V} \left(  -\frac{Nk_BT}{p^2} \right) = \frac{1}{P}
+\end{equation}
+となる。よって、
+\begin{equation}
+  \frac{\ev{\varDelta N}^2}{N} = 1  \Rightarrow \frac{\varDelta N}{\ev{N}} = \frac{1}{\ev{N}^{\frac{1}{2}}}
+\end{equation}
+となることがわかる。
+つまり。\(\ev{N}\)が非常に大きいとき\(\varDelta N\)は無視できるようになる。
+
+
+\section{量子統計力学（グランドカノニカル分布）}
+\subsection{量子論}
+一粒子状態\(\varphi_j\)のエネルギー準位を\(\varepsilon_j\)とする。
+その量子様態にある粒子数を\(n_j\)とする。
+
+\paragraph{粒子間の相互作用がない場合}
+
+\begin{equation}\label{eq:1.1}
+  \begin{cases}
+    \text{全エネルギー} : & E = \sum_j n_j \varepsilon_j \\
+    \text{全粒子数} : & N = \sum_j n_j
+  \end{cases}
+\end{equation}
+となる。
+
+\paragraph{量子の統計性}
+量子はボーズ粒子やフェルミ粒子のような入れ替えの作用により変化する統計性が二つ存在することがわかる。
+\(N\)粒子系の波動関数を\(\psi(r_1,r_2,\ldots ,r_N)\)となることがわかる。
+
+同種の二粒子を入れ替えた状態は量子力学的に同等であるために、\(C\)を定数として、
+\begin{equation}
+  \psi(\dots,r_l,\dots,r_m,\dots) =C \psi(\dots,r_m,\dots,r_l,\dots)
+\end{equation}
+再び系が入れ替えるともとに戻るはずなので\(C^2=1\)より、
+\begin{equation}
+  C=  \pm 1 
+\end{equation}
+
+
+\paragraph{二粒子系}
+二流紙の波動関数では、
+\begin{equation}
+  \psi^{\pm}_{12} = \frac{1}{\sqrt{2}}\left( \psi_1(r_1)\psi_2(r_2) \pm \psi_1(r_2)\psi_2(r_1) \right)
+\end{equation}
+となる。
+
+フェルミ粒子の時に\(\alpha=\beta\)とすると、\(\psi^{-}_{\alpha,\alpha}(r_1,r_2)=0\)となる。
+このために、電子であるとパウリの排他率が成り立つ。
+
+つまり同一の量子状態を二粒子で占有することが出来ない。これをパウリの排他率という。
+
+意向からは量子状態に対する統計力学を考える。
+分配関数から、
+\begin{align}
+  Z_N & = \sum_i e^{\beta E_i} \\
+  & = \sum_{\{n_j\}} e^{-\beta \sum_j n_j \varepsilon_j} \\
+\end{align}
+となる。
+
+大分配関数では、
+\begin{align}
+  \Xi & = \sum_{N=0}^{\infty}e^{\beta \mu N} Z_N \\
+  & = \sum_{N=0}^{\infty}\sum_{\{n_j\}}^{}e^{\beta \mu \sum_j n_j} e^{-\beta \sum_j n_j \varepsilon_j} \\
+  & = \sum_{n_1}\sum_{n_1}\dots \prod_j e^{\beta \mu n_j} e^{-\beta n_j \varepsilon_j} \\
+  & = \sum_{n_1} e^{\beta(\mu - \varepsilon_1)n_1}\sum_{n_2} e^{\beta(\mu - \varepsilon_2)n_2}\dots \\
+  & = \prod_j \sum_{n_j} e^{\beta(\mu - \varepsilon_j)n_j} 
+\end{align}
+となる。
+
+全系の量子状態はどの量子状態にいくつ粒子がいるかで決まる。
+同種な粒子は区別できないという原理を置く。
+
+この時、ボーズアインシュタイン統計について考えると、
+\begin{description}
+  \item[ボーズアインシュタイン統計] 一つの順位に任意個の粒子が入るとする。光子やフォノン
+  \begin{equation}
+    \Xi = \prod_j \sum_{n_j}^{\infty}e^{\beta(\mu-\varepsilon_j)n_j} = \prod_j \frac{1}{1-e^{\beta(\mu-\varepsilon_j)}}
+  \end{equation}
+  \item[フェルミディラック統計] フェルミディラック統計は、\(n_j=0,1\)となる。
+  人等の順位に対して一項の粒子まで入れるこれをフェルミ粒子、電子陽子、中性子などがあり、
+  \begin{equation}
+    \Xi = \prod_j \sum^1_{n_j=0} e^{\beta(\mu - \varepsilon_j)n_j} = \prod_j \left[ 1 + e^{\beta(\mu-\varepsilon_j)} \right]
+  \end{equation}
+\end{description}
+維持用のことをまとめると、
+\begin{equation}
+  \Xi = \prod_j \left[ 1 \mp e^{\beta(\mu-\varepsilon_j)} \right]^{\mp 1}
+\end{equation}
+となりグランドポテンシャルが
+\begin{equation}
+  \Omega = -k_BT \sum_j \ln \left[ 1 \mp e^{\beta(\mu-\varepsilon_j)} \right]^{\mp} = \sum_j \Omega_j 
+\end{equation}
+となり、
+\begin{equation}
+  \ev{N} = - \pdv{\Omega}{\mu} = \sum_j \frac{1}{e^{\beta(\varepsilon_j-\mu)} \mp 1}
+\end{equation}
+となる。
+
+
+エネルギー状態が\(\varepsilon\)にある平均粒子数を考える。
+
+\begin{equation}
+  \begin{cases}
+    n(\varepsilon)  =  \frac{1}{e^{(\varepsilon-\mu)/k_BT} \mp 1} & \text{ボーズ粒子} \\
+    n(\varepsilon)  =  \frac{1}{e^{(\varepsilon-\mu)/k_BT} + 1} & \text{フェルミ粒子}
+  \end{cases}
+\end{equation}
+となる。
+
+問題）ボーズ粒子とフェル分布を導出せよ。
+
+高温極限としては、高温の時\(n(\varepsilon),f(\varepsilon)\ll 1\)で、\(\mu<0\) かつ\(-\beta \mu \gg 1\)となっており\(e^{-\beta \mu} \gg 1\)この時、
+\begin{equation}
+  n(\varepsilon) = f(\varepsilon) \sim e^{-\beta(\varepsilon-\mu)}
+\end{equation}
+つまり古典論と一致に量子性が現れない。
+
+\paragraph{古典理想気体と量子の違い}
+古典と量子の違いは何か？という問いに対して1粒子分配関数を考えると、
+\begin{equation}
+  Z = \frac{V}{h^3} (2 \pi mk_BT)^{\frac{3}{2}}
+\end{equation}
+となる。
+
+古典形での\(Z_N = \frac{1}{N!}Z_1^N\)は量子では間違いである。
+古典論での過程は、
+\begin{enumerate}
+  \item 各粒子は同じ状態にならない これはボーズ粒子と矛盾する
+  \item 各粒子の状態は独立に決まる これはパウリの排他率と矛盾する
+\end{enumerate}
+
+
+
+
+\end{document}

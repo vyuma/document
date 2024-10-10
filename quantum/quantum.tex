@@ -1,0 +1,220 @@
+\documentclass[titlepage]{ltjsarticle}
+% ページスタイル
+\pagestyle{headings}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 数式
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{derivative}
+% 式番号を途中でふらない(参照するものだけ参照する)
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+% 数式をすべてdisplaystyleにする。
+\everymath{\displaystyle}
+\usepackage{bookmark}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% mysimpleboxの設定
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newtcolorbox{mysimplebox}[1]{%
+colframe=black,colback=white,
+coltitle=black,colbacktitle=white,
+boxrule=0.8pt,arc=0mm,
+fonttitle=\sffamily\bfseries,
+enhanced,
+attach boxed title to top left={xshift=10mm ,yshift=-3mm},
+boxed title style={frame hidden},
+title=#1}
+% Pythonでのグラフ描画をインポートするために必要なパッケージ
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\title{量子力学Ⅲ}
+\author{戸部和弘}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section*{量子力学の基礎}
+単位を取りたい場合は中間レポートまたは期末試験を出さなければ、欠席扱いにする。
+中間レポートまたは、期末試験を出す場合は、単位を取得することができる。
+
+量子力学演習Ⅲは、演習問題をやりながらやってほしい。
+なのでオススメ
+
+\subsection*{量子力学の基礎}
+授業内容としては、
+\begin{description}
+  \item[時間による摂動輪] 定数の摂動、調和振動、崩壊幅、（壽命）
+  \item[古典的輻射場との相互作用への応用] 古典的輻射場との相互作用への応用
+  \item[水素原子中の電子の遷移] \(2p\rightarrow 1s\)遷移
+  \item[同種粒子] ２粒子径のボゾンとフェルミオン、パウリの排他率
+  \item[ヘリウム原子] 対称性と選択則
+  \item[近似法・変分法] 
+  \item[散乱問題] 
+  \begin{itemize}
+    \item ボルン近似
+    \item 散乱断面積
+    \item 部分波展開、位相のずれ、光学定理
+  \end{itemize}
+\end{description}
+
+\section{時間による摂動論}
+1時間による摂動論
+量子力学の問題を解くとは、シュレディンガー方程式を解くことであるが、ほとんどの場合生アックに解くことが出来ない。そこで、近似的に解く方法が重要である。
+
+さて、シュレディンガー方程式は
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \lambda \hat{H_I}
+\end{equation}
+としよう。ただし、\(\hat{H}_0 \gg \lambda \hat{H}_I\)で、\(\hat{H}_0\)の解を知っているとき、
+\begin{equation}
+  \hat{H}_0 \psi_n = E_n^{(0)} \psi_n
+\end{equation}
+となる。
+古典力学は、\([\hat{x},\hat{p}]=i\hbar\)となるが、\(\hbar\to 0\)のときである。
+WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることである。
+
+\subsection*{時間に依存しないポテンシャルの場合（定常状態）}
+シュレディンガー方程式は時間による場合は、
+\begin{equation}
+  i \hbar \pdv{}{t} \Psi = \hat{H} \Psi , \quad \hat{H} = \frac{1}{2m} \hat{\bm{P}}^2 + V(\bm{x})
+\end{equation}
+となる。
+このときに、\(\Psi(t)=T(t)\Psi(\bm{x})\)から、
+\begin{align}
+  i \hbar \left( \pdv{T(t)}{t} \right) \psi(\bm{x}) = \hat{H} \psi(\bm{x}) T(t)\\
+  i \hbar \frac{1}{T(t)} \left( \odv{T(t)}{t} \right) = \frac{1}{\psi} \hat{H} \psi(\bm{x}) = E
+\end{align}
+となるために、
+\begin{equation}
+  \hat{H} \psi(\bm{x}) = E \psi(\bm{x})
+\end{equation}
+となり、\(\hat{H}\)の固有値問題である。
+この解を、\(n=1,2,3\ldots\)とすると、
+\begin{equation}
+  \hat{H} \psi_n(\bm{x}) = E_n \psi_n(\bm{x})
+\end{equation}
+となり、ここから、時間による摂動論は、
+\begin{equation}
+  \odv{T_n(t)}{t} = - \frac{i}{\hbar} E_n T_n(t)
+\end{equation}
+となることから、\(T_n(t) = A e^{-\frac{i}{\hbar}E_n t}\)
+であり、
+\begin{equation}
+  \Psi(\bm{x},t) = \sum_n C_n \exp \left( -\frac{i E_n t}{\hbar} \right) \psi_n(\bm{x})
+\end{equation}
+となる。
+ここでは、\(C_n\)は時間\(t\)に依らない値になっている。
+\ssubection{時間に依存するポテンシャルの場合}
+相互作用表示を用いる。
+時間依存性がないハミルトニアンと時間依存性があるハミルトニアンの足し合わせとしよう。
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \hat{V}(t)
+\end{equation}
+の系を考える。
+
+この時の解が、
+\begin{equation}
+\Psi(t) = \sum_n C_n(t) \exp \left( -\frac{i E_n t}{\hbar} \right) \psi_n(\bm{x})
+\end{equation}
+となりそうな直観と思おう。これは本当なのか？もしこれが本当ならば、この確率が時間依存することになる。
+つまりは、
+\begin{equation}
+  \psi_n \xrightarrow{t} \psi_m (n\ne m)
+\end{equation}
+となる。
+つまり、\(C_1=1\)という状態を得たら、他の状態に移るということは無い。
+\(C\)に時間依存性があるということは、遷移という現象がおこる。
+
+\subsubsection{相互作用表示}
+相互作用表示について考える。
+今までの表示はシュレディンガー表示である
+シュレディンガー表示としては,
+\begin{equation}
+  i \hbar \pdv{}{t} \psi_s(t) = \hat{H} \psi_s(t)
+\end{equation}
+となり、物理量\(X\)の演算子を\(X_s\)と表記する。
+
+この解を形式的に書くと、
+\begin{equation}
+  \psi_s(t) = \exp \left( - \frac{i \hat{H} t}{\hbar} \right) \psi_s(0)
+\end{equation}
+となる。
+
+\(X\)の時刻\(t\)における期待値としては、
+\begin{equation}
+  \bar{X} = \int \odif[order=3]{x} \psi^\dagger_s \hat{X}_s \psi_s
+\end{equation}
+となる。
+それに対して、相互作用表示とは何か？これをディラック表示（Dirac表示）ともよばれる。
+\begin{equation}
+  \psi_s(t) = \exp\left[ -\frac{i \hat{H}_0 t}{\hbar} \right]\psi_I(t)
+\end{equation}
+相互作用表示とシュレディンガー表示の関係を関連付けている式になっている。相互作用前のハミルトニアンを考えている。
+
+\begin{equation}
+  \hat{X}_I(t) = \exp\left[ \frac{i \hat{H}_0 t}{\hbar} \right]\hat{X}_S \exp \left[ -i \frac{\hat{H}_0 t}{\hbar} \right]
+\end{equation}
+としよう。すると\(X\)の時刻における期待値は
+\begin{align}
+  \bar{X} &  = \int \odif[order=3]{x} \psi^\dagger_S \hat{X}_S \psi_S\\
+  & = \int \odif[order=3]{x} \psi^\dagger_I \exp\left[ \frac{i \hat{H}_0 t}{\hbar} \right]\exp \left[ -i \frac{\hat{H}_0 t}{\hbar} \right] \hat{X}_I \exp \left[ i \frac{\hat{H}_0 t}{\hbar} \right] \exp\left[ -\frac{i \hat{H}_0 t}{\hbar} \right]\psi_I\\
+  & = \int \odif[order=3]{x} \psi^\dagger_I \hat{X}_I \psi_I
+\end{align}
+相互作用表示の波動関数はどんな関係を満たすのか？
+
+\begin{align}
+  i \hbar \pdv{}{t} \psi_t & = i \hbar \pdv{}{t} \left( e^{\frac{i \hat{H}_0 t}{\hbar}} \psi_s(t) \right)\\
+  & = - \hat{H}_0 \exp \left( \frac{i  \hat{H}_0 t}{\hbar} \right)\psi_s(t) + \exp\left( \frac{i \hat{H}_0 t}{\hbar} i \hbar \pdv{\psi_s}{t} \right)\\
+  & = - \hat{H}_0 \exp \left( \frac{i  \hat{H}_0 t}{\hbar} \right)\psi_s(t) + \exp\left( \frac{i \hat{H}_0 t}{\hbar}\right)(\hat{H}_0 + \hat{V})\psi_s(t)\\
+  & = V_I(t) \psi_I(t) 
+\end{align}
+
+さてこれで、\(\hat{X}_I\)について微分すると、
+\begin{align}
+  \odv{\hat{X}_I}{t} & = \frac{i \hat{H}_0}{\hbar} \hat{X}_I - \hat{X}_I \frac{i \hat{H}_0}{\hbar} \\
+  & = \frac{i}{\hbar} [\hat{H}_0,\hat{X}_I]\\
+  & = - \frac{i}{\hbar} [\hat{X}_I,\hat{H}_0]
+\end{align}
+となる。
+
+まとめると、メインのハミルトニアンの時間依存性は演算子の外に出しておいて、そのあとに時間依存する摂動について考えてみる。
+
+相互作用表示の波動関数\(\psi_I(t)\)を
+\begin{align}
+  \hat{H}_0 \psi_n & = E_n \psi_n \\
+  \psi_I(t) & = \sum_n C_n(t) \psi_m\\\
+  \psi_s(t) & = \exp \left( - \frac{i \hat{H}_0 t}{\hbar} \right) \psi_I(t) \\
+  & = \sum_n C_n(t) e^{-\frac{iEt}{\hbar}} \psi_n(\bm{x})
+\end{align}
+となり、よさそうなものになる。
+
+さてこの時に、\(\psi_i\)が満たすべき方程式は、
+\begin{align}
+  i \hbar \pdv{\psi_I}{t} & = \hat{V}_I \psi_I(t) \\
+  i \hbar \sum_n \pdv{C_n(t)}{t} \psi_n & = \sum_n C_n(t) \hat{V}_I \psi_n
+\end{align}
+となり、\(\int \odif[order=3]{x} \psi_m^\dagger \psi = \delta_{nm}\)となり、
+\(\psi_m^\dagger\)を左からかけて積分すると、
+\begin{align}
+  i \hbar \sum_n \pdv{C_n(t)}{t} \int \odif[order=3]{x} \psi_m^\dagger \psi_n & = \sum_n C_n(t) \int \odif[order=3]{x} \psi_m^\dagger \hat{V}_I \psi_n\\
+  i \hbar \pdv{C_m(t)}{t} & = \sum_n C_n(t) \int \odif[order=3]{x} \psi_m^\dagger \hat{V}_I \psi_n\\
+  \int \odif[order=3]{x} \psi_m^\dagger V_I \psi_n & =\int \odif[order=3]{x} \exp \left( \frac{i(E_n-E_m)}{\hbar} \right)\psi_m^\dagger \hat{V} \psi_n
+\end{align}
+  となる。ここから、\(\omega_{mn} = \frac{E_m-E_n}{\hbar}=-\omega_{nm}\)として、
+  \(V_{nm} = \int \odif[order=3]{x} \psi_{m}^\dagger V \psi_{n}\)となり、\(V_{nm}(t)e^{i \omega_{mn}t} = \bar{V}\)となることから、
+  \begin{equation}
+    i \hbar \odv{C_m(t)}{t} = \sum_n \bar{V}_{mn} C_n(t)
+  \end{equation}
+これを解こう！！
+
+
+\end{document}
