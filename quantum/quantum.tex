@@ -82,7 +82,7 @@ title=#1}
 古典力学は、\([\hat{x},\hat{p}]=i\hbar\)となるが、\(\hbar\to 0\)のときである。
 WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることである。
 
-\subsection*{時間に依存しないポテンシャルの場合（定常状態）}
+\subsection{時間に依存しないポテンシャルの場合（定常状態）}
 シュレディンガー方程式は時間による場合は、
 \begin{equation}
   i \hbar \pdv{}{t} \Psi = \hat{H} \Psi , \quad \hat{H} = \frac{1}{2m} \hat{\bm{P}}^2 + V(\bm{x})
@@ -134,7 +134,7 @@ WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることであ�
 つまり、\(C_1=1\)という状態を得たら、他の状態に移るということは無い。
 \(C\)に時間依存性があるということは、遷移という現象がおこる。
 
-\subsubsection{相互作用表示}
+\subsection{相互作用表示}
 相互作用表示について考える。
 今までの表示はシュレディンガー表示である
 シュレディンガー表示としては,
@@ -215,6 +215,245 @@ WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることであ�
     i \hbar \odv{C_m(t)}{t} = \sum_n \bar{V}_{mn} C_n(t)
   \end{equation}
 これを解こう！！
+
+
+% 第3回分の内容を書いておく必要がある。
+
+
+
+
+
+
+
+\paragraph{調和振動}
+調和振動として、
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \hat{V}(t)
+\end{equation}
+となる。
+この時の、\(\hat{V}\)は
+\begin{equation}
+  \hat{V}(t) = \hat{F} e^{i\omega t} + \hat{F}^\dagger e^{-i\omega t}
+\end{equation}
+とんまり、初期条件として、\(t=0\)で\(\psi_0\)にあったとする。
+この時に、
+\begin{equation}
+  \psi_I(t) = \sum_n C_n(t) \psi_n
+\end{equation}
+暗る。\(t=0\)では、\(t=0\)で\(C_i = 0\) そのほかはゼロである。
+
+ゼロ次元では、
+\begin{equation}
+  C^{(0)}_[i(0)] = 1 \quad C^{(0)}_n(0) = 0 \quad (n\ne i)
+\end{equation}
+となる。
+
+一次では、
+\begin{equation}
+  C^{(1)}_m(t) = \frac{1}{i \hbar} \int_{0}^{t} \odif{t'} \bar{V}_{mn} C^{(0)}_n(t')
+\end{equation}
+となり、
+\begin{equation}
+  \bar{V}_{mi}(t') = V_{mi} e^{i\omega_{mi}t'} = V_{mi} e^{i\omega_{mi}t}
+\end{equation}
+となり、
+\begin{equation}
+  \omega_{mi} = \frac{E_m - E_i}{\hbar}
+\end{equation}
+となる。
+
+さてこの時に、
+\begin{align}
+  V_{mi}(t) & = \int \odif[order=3]{x} \psi^\dagger_m \hat{V} \psi_i\\
+  F_{mi} & = \int \odif[order=3]{x} \psi^\dagger_m \hat{F} \psi_i\\
+  F_{mi}^\dagger & = \int \odif[order=3]{x} \psi^\dagger_m \hat{F}^\dagger \psi_i
+\end{align}
+となる。これを計算することによって、
+\begin{equation}
+  C_n^{(1)} = \frac{-2i}{\hbar} \left[ F_m e^{i\frac{(\omega + \omega_{ni})t}{2}} \frac{\sin \left( \frac{\omega_{ni}+\omega}{2}t \right)}{\omega_m + \omega} + F^\dagger_m e^{\frac{i(\omega_m-\omega)}{2}t}\frac{\sin \left( \frac{\omega_{ni}-\omega}{2}t \right)}{\omega_{mi}-\omega} \right]
+\end{equation}
+となる。
+
+さてこれを絶対値の二乗をとってあげると、確率になるはずである。
+\begin{align}
+  |C^{(1)}_m(t)|^2 = \frac{4}{\hbar^2}\left[ |F_{mi}|^2 \frac{\sin^2 \left( \frac{\omega_{mi}+\omega}{2}t \right)}{(\omega_m + \omega)^2} + |(F^\dagger)_m|^2 \frac{\sin^2\left( \frac{\omega_{ni}-\omega}{2}t \right)}{(\omega_{mi}-\omega)^2} + \left\{ 
+    F_{mi} (F^\dagger)_{mi} + F^*_{mi}F^\dagger_{mi}e^{i\omega t} \times \frac{\sin\left( (\omega_{mi} + \omega)/2 \right)\sin\left( (\omega_{mi} - \omega)/2 \right)}{(\omega_{mi}+\omega)(\omega_{mi}-\omega)} 
+   \right\} \right]
+\end{align}
+となる。
+
+\(t\)が十分に大きいときに、
+\begin{equation}
+  \lim_{t\to \infty} \frac{\sin \left( tx \right)}{\pi x } = \delta(x)
+\end{equation}
+となる。
+
+この時に、
+\begin{align}
+  \frac{\sin^2\left( \frac{\omega_m + \omega}{2}t  \right)}{\left( \omega_m + \omega \right)^2} = 
+  \frac{\sin \left( \frac{\omega_m + \omega}{2}t  \right)}{\pi \left( \frac{\omega_m + \omega}{2} \right)}\frac{\pi}{2} \frac{\sin\left( \frac{\omega_m + \omega}{2}t \right)}{\omega_m + \omega}\\
+  \to  \delta\left( \frac{\omega_m + \omega}{2} \right)\frac{\pi}{2} \left( \frac{t}{2} \right)\\
+   =  \delta\left( \omega_m + \omega \right) \frac{\pi t}{2}
+\end{align}
+となる。
+ここで、
+\begin{equation}
+  \sin \left( \frac{\omega_m + \omega}{2}  t \right) =  \frac{\omega_m + \omega}{2}  t
+\end{equation}
+となる。
+また、
+\begin{equation}
+  \frac{\sin^2 \left( \frac{\omega_m-\omega}{2}t   \right)}{(\omega_m - \omega)^2} = \delta\left( \omega_m - \omega \right) \frac{\pi t}{2}
+\end{equation}
+となり、
+\begin{equation}
+  \frac{\sin \left( \frac{\omega_m + \omega}{2} \right) \sin \left( \frac{\omega_m- \omega}{2} \right)}{(\omega_m + \omega)(\omega_m - \omega)} = \frac{\pi^2}{4} \left( \delta\left( \omega_m + \omega \right)\delta\left( \omega_m - \omega \right) \right) \to 0 
+\end{equation}
+となる。
+
+以上より、
+\begin{equation}
+  |C_n(t)^{(1)} | ^2 = \frac{2\pi}{\hbar}t |F_{mi}|^2 \delta(E_m-E_i + \hbar \omega) + |F^\dagger_{mi}|^2 \delta(E_m - E_i - \hbar \omega)
+\end{equation}
+となる。
+
+単位時間当たりの遷移確率\(\omega_{i\to m}\)は、
+\begin{align}
+  \omega_{i \to m} & = \frac{|C_m^{(1}|^2}{t}\\
+  & = \frac{2\pi}{\hbar} |F_{mi}|^2 \delta(E_m - E_i + \hbar \omega) + |F^\dagger_{mi}|^2 \delta(E_m - E_i - \hbar \omega) 
+\end{align}
+となり、
+
+
+一項目は、
+\begin{equation}
+  E_m = E_i - \hbar\omega
+\end{equation}
+\(E_m\)は\(E_i\)よりも低いエネルギー状態である。つまりそれだけ遷移したと考えることが出来る。
+これを誘導放出という。
+
+
+第二項としては、
+\begin{equation}
+  E_m = E_i + \hbar \omega
+\end{equation}
+つまり\(\hbar\omega\)だけのエネルギーを吸収したと考えることが出来る。
+
+
+
+\subsection{崩壊幅壽命}
+
+初期状態\(i\)での\(\psi_i\)の状態に残っている確率としては。\(|C_i(t)|^2\)となり、状態\(E_m\)への遷移確率は\(|C_m(t)|^2\)となる。
+この突起、例として定数振動を考えてみよう。
+
+\paragraph{例:定数振動}
+定数振動として、
+\begin{equation}
+  \hat{H} = \hat{J} + \hat{V}(t)
+\end{equation}
+の時、
+\begin{equation}
+  \hat{V} = \begin{cases}
+    \hat{V} & t>0 \\
+    0 & t<0
+  \end{cases}
+\end{equation}
+となるときに、初期条件として、
+\begin{equation}
+  \psi_I = \alpha(t) \psi_i + \sum_{n\ne i} C_n (t) \psi_n 
+\end{equation}
+となる。時刻\(t\)において、\(f\)の状態として、
+\begin{align}
+  |C^{(1)}_{f't}|^2= 4|V_{f_i}|^2 \frac{\sin^2\left( \frac{E_f-E_i}{2}t \right)}{(E_f-E_i)^2}\\
+  \omega_{i \to f} = \frac{|C_{f_i}^{(1)}|^2}{t} = \frac{2\pi}{\hbar}|V_{f_i}|^2 \delta(E_f - E_i)
+\end{align}
+となる。ここでは確率の保存を用いて、求めよう。この時、状態\(i\)にいる場合には、\(|\alpha(t)|^2\)となる。
+
+用意された状態も存在する。
+確率の保存をすると\(t=0\)の場合には、
+\begin{equation}
+  \int \odif[order=3]{x} \psi_i^\dagger \psi_j = \delta_{ij}
+\end{equation}
+となる。
+\begin{equation}
+  \int \psi_I^\ast \hat{V} \psi_I =1 
+\end{equation}
+と規格化すると、
+\begin{equation}
+  \int \odif[order=3]{x} \left( a^\ast (t) \psi^\ast _i + \sum_{n\ne i} C_n^\ast \psi^\ast_n  \right)\left( a^\ast (t) \psi^\ast _i + \sum_{n\ne i} C_n^\ast \psi^\ast_n  \right) = |a(t)|^2 + \sum_{n\ne i} |C_n(t)|^2 = 1
+\end{equation}
+
+以上から、
+\begin{align}
+  |a(t)|^2 &  = 1 - \sum_{n\ne i} |C_n(t)|^2\\
+  & = 1 - \sum_{n\ne i} \omega_{i\to n} t 
+\end{align}
+そこで崩壊幅を\(\Gamma_i\)とすると、
+\begin{equation}
+  \Gamma_i = \sum_{n\ne i} \omega_{i\to n}
+\end{equation}
+となる。
+この時、
+\begin{align}
+  a(t) & = e^{i \delta} \left( 1 - \frac{\Gamma_i}{2 \hbar}t \right) \\
+  & = e^{i \delta} e^{-\frac{\Gamma_i}{2 \hbar}t}
+\end{align}
+となる。この結果が知りたい結果だった。\(\left( 1 - \frac{\Gamma_i}{2 \hbar}t \right)\)の部分が第一次摂動までしかないとして、それを想像を働かせてそれが無限項あると考えておくとよい。
+
+その時に、\(\mel{i}{\hat{V}}{i}=e^{-\frac{\Gamma_i}{2 \hbar}t}\)となる。
+\begin{equation}
+  \Delta_i = V_{ii} - P \sum_{n\ne i} \frac{|V_{ni}|^2}{E_n-E_i}
+\end{equation}
+
+この時に、
+\begin{equation}
+  |a(t)|^2 = e^{-\frac{\Gamma_i}{\hbar}t} = e^{-\frac{t}{\tau_i}}
+\end{equation}
+となる。
+不安定な状態や粒子は特有の平均壽命を持つ。指数法則に従って崩壊していく。
+崩壊幅は\(\Gamma_i\)として、\(\tau_i=\frac{\hbar}{\Gamma}\)となり平均壽命とする。
+
+\begin{equation}
+  BR(i \to f) = \frac{\omega_{i\to f}}{\left( \frac{\Gamma}{\hbar} \right)}
+\end{equation}
+となり崩壊分岐被となる。
+これを足し上げれば、
+\begin{equation}
+  \sum_{f} BR(i \to f) = 1
+\end{equation}
+となるはずである。
+
+遷移する確率が存在するならば、計算することで崩壊幅を計算することが出来ればとても良い。安定というのは崩壊しないのは、その状態の壽命を出すことが出来る。
+
+崩壊幅を\(\Gamma_i\)としており。
+\begin{equation}
+  \psi_I (t) = a(t) \psi_i + \sum_{n\ne i} C_f(t) \psi_f
+\end{equation}
+をシュレディンガー表示にすると、
+\begin{equation}
+  \psi_s = e^{-\frac{i \hat{H}t}{\hbar}}\psi_I(t) = a(t) e^{- i \frac{E_i }{\hbar} t}\psi_i + \sum_{f \ne i} C_f(t)e^{-\frac{iE_f t}{\hbar}}\psi_f  
+\end{equation}
+となる。ここから、
+\begin{align}
+  \varphi(t) & = a(t) e^{-\frac{iE t}{\hbar}t} \\
+  & = e^{-\frac{i \varDelta_i t }{\hbar}} e^{-\frac{\Gamma_i t}{2 \hbar}}e^{-\frac{iE_i t}{\hbar}}\\
+  E_i & = E_i + \varDelta_i \\
+  \varphi(t) & = e^{-\frac{iE_i t}{\hbar}} e^{-\frac{\Gamma_i t}{2 \hbar}t}
+\end{align}
+となり、
+\(t<0\),\(\varphi(t)=0\)として、\(\varphi(t)\)のフーリエ変換
+
+\begin{align}
+  f(E) & = \frac{1}{\sqrt{2\pi}}\int_{-\infty }^{\infty} \varphi(t) e^{iEt/\hbar} \odif{t}\\
+  & = \frac{1}{\sqrt{2\pi}}\int^{\infty}_{0}\odif{t} \exp\left( \frac{i }{\hbar}(E-\var{E}+\frac{i \Gamma_{i}}{2})t \right)\\
+  & = \frac{i \hbar}{\sqrt{2\pi}}\frac{1}{E-\var{E}_i +\frac{i \Gamma_i}{2}}
+\end{align}
+となり、
+\begin{equation}
+  |f(E)|^2 = \frac{\hbar^2}{2\pi} \frac{\Gamma_i}{(E-\var{E}_i)^2 + \left( \frac{\Gamma_i}{2} \right)^2}
+\end{equation}
+となる。
+
 
 
 \end{document}

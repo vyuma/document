@@ -424,6 +424,198 @@ Bのエントロピーを\(S_B\)とすると、
   \item 各粒子の状態は独立に決まる これはパウリの排他率と矛盾する
 \end{enumerate}
 
+\section{理想フェルミ粒子}
+\subsection{フェルミ分布}
+エネルギーがその一粒子状態の平均粒子数を考えると、
+\begin{equation}
+  f(\varepsilon) = \frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}
+\end{equation}
+となる。これをフェルミ分布という。
+
+
+\(T=0\)での\(\mu=\mu_0\equiv \varepsilon_F\)となり\(\varepsilon_F\)のことをフェルミエネルギーと呼ぶ。
+グラフで書くと、\(\varepsilon_F\)でのステップ関数のようになるが、\(T>0\)でのフェルミ分布は滑らかになる。
+温度による\(f(\varepsilon)\)の広がり幅としては\(T \)となる。
+テストで毎回フェルミ分布関数を出している。
+これを書けるようにしよう。
+
+\subsection{自由電子模型}
+1価金価\(Na\)がぞんざいして、\((1s)^2,(2s)^2,,(2p)^6,(3s)^1\)となる。
+この時に、\(3s\)電子としては伝導電子として結晶中を自由に動き回る。
+自由電子模型としては、
+\begin{equation}
+  -\frac{\hbar^2}{2m}\left( \pdv[order=2]{}{x} + \pdv[order=2]{}{y} + \pdv[order=2]{}{z} \right) \psi = E \psi 
+\end{equation}
+となるので、周期的境界条件を生かしてあげる必要がある。
+
+一片の長さを\(L\)として、周期的境界条件を満たすとする。
+
+\begin{equation}
+  \psi = e^{i \frac{2\pi}{L}(n_x x + n_y y + n_z z)}
+\end{equation}
+となり、\(n_x,n_y,n_z\)となり、波動関数の形が変わらない。
+
+\begin{equation}
+  E = \frac{\hbar^2}{2m} \left( \frac{2\pi}{L} \right)(n_x^2+n_y^2+n_z^2)
+\end{equation}
+となり、エネルギー\(E\)より小さい状態の数をカウントする。
+
+\begin{equation}
+  n_x^2 + n_y^2 + n_z^2 \leq \frac{2m}{\hbar^2}\left( \frac{L}{2\pi} \right)^2 E 
+\end{equation}
+となることから、割り算してしまえばこれ以上小さいという数を数えれば、状態の数に対応する。その整数値の数を数えればよい。
+その整数値は体積を計算してあげればいい。
+
+そのために、半径が\(\left[ \frac{2m}{\hbar^2}\left( \frac{L}{2\pi} \right)^2 E \right]\)の球の内部における格子点の数について考える。ここから、体積\(V\)は、
+\begin{equation}
+  V = \frac{4\pi}{3}\left[ \frac{2m}{\hbar^2}\left( \frac{L}{2\pi} \right)^2 E \right]^{\frac{3}{2}}
+\end{equation}
+となる。
+エネルギーが\(E\)と\(E+\odif{E}\)の間にある状態の数\(g\)はスピン縮重度として
+\begin{equation}
+  D(E) \odif{E} = \frac{2\pi V }{\hbar^3} \sqrt{2mE}g \odif{E}
+\end{equation}
+となる。\(g\)については\(g=(2s+1)\)で電子のばあいは\(s=\frac{1}{2}\)となる。
+全電子数\(N\)は、
+\begin{equation}
+  N = \int^{\infty}_{0} D(E)f(E) \odif{E}
+\end{equation}
+となる。
+この時にはエネルギーが負にならないので、
+下限をゼロとして、\(T=0\)の場合には、
+\begin{align}
+  N & = \int^{\infty}_{0} f(E)D(E) \odif{E} \\
+  & = \int_{0}^{\varepsilon_F} \frac{2\pi g V}{h^3} (2m)^{\frac{3}{2}} E^{\frac{1}{2}} \odif{E} \\
+  & = \frac{4\pi g V }{3h^3} (2m)^{\frac{3}{2}} \varepsilon_F^{\frac{3}{2}}
+\end{align}
+となるために、
+\begin{equation}
+  \varphi_F = \frac{1}{2m}\left( \frac{3h^3N}{4\pi gV} \right)^{\frac{2}{3}} = \frac{h^2}{2m}\left( \frac{3}{4\pi g}n \right)^{\frac{2}{3}}
+\end{equation}
+となることから、全エネルギーの場合には、
+\begin{align}
+  U & = \int_{0}^{\infty} E D(E)f(E) \odif{E} \\
+  & = \int_{0}^{\varepsilon_F} \frac{2\pi g V}{h^3 }(2m)^{\frac{3}{2}} E^{\frac{3}{2}} \odif{E} \\
+  & = \frac{4\pi gV}{5h^3} (2m)^{\frac{3}{2}}\varepsilon_F^{\frac{5}{2}}\\
+  & = \frac{3}{5}\varepsilon_F N
+\end{align}
+依って一粒子あたりの運動エネルギーは\(\frac{3}{5}\varphi_F\)となる。
+
+また演習問題より、\(PV = \frac{2}{3}U\)となるために、
+\begin{equation}\label{eq:2.2}
+  P = \frac{3}{5}\varepsilon_F n = \frac{h^2}{5m} \left( \frac{3}{4\pi g} \right)^{
+    \frac{2}{3}}n^{\frac{5}{3}}
+\end{equation}
+となり、これは\(T=0\)の時の式になる。
+
+
+\paragraph{フェルミ温度}
+熱的ドブロイ波長では、
+\begin{equation}
+  \lambda_T = \frac{h}{(2\pi m k_BT)^{\frac{1}{2}}}
+\end{equation}
+となる\(\lambda_T\)は\(k_BT\)ほどのエネルギーを持つ粒子の波動関数の広がりを表す。
+\begin{equation}
+  \begin{cases}
+    \lambda_T \gg \left( \frac{V}{N} \right)^{\frac{1}{3}} & \text{量子力学的効果が無視できる} \\
+    \lambda_T \ll \left( \frac{V}{N} \right)^{\frac{1}{3}} & \text{量子力学的効果が無視できない}
+  \end{cases}
+\end{equation}
+さて、\(\lambda_T > \left( \frac{V}{N} \right)^{\frac{1}{3}}\)は、
+\(k_BT < \frac{h^2}{2\pi m}n^{\frac{2}{3}}\sim \varepsilon_F\)よって、\(T<T_F\equiv \frac{\varphi_F }{k_B}\)となる。この時、この時量子性が重要になる。
+
+\paragraph{電子間相互作用}
+電子一項あたりの電子間相互作用は\(e^2\left( \frac{N}{V} \right)^{\frac{1}{3}}\propto n^{\frac{1}{3}}\)となる。
+一方一粒子あたりの運動エネルギーは\(\frac{3}{5}\varepsilon_F \propto n^{\frac{2}{3}}\)である。\(n\)は電子密度である。
+以上のような関係性から、電子間相互作用を運動エネルギーで割ってあげよう。
+この時にはどのようになるだろうか？
+\begin{equation}
+  \text{電子間相互作用} / \text{運動エネルギー} \propto n^{-\frac{1}{3}}
+\end{equation}
+電子の密度が高濃度になればなるほど電子間相互作用が運動エネルギーよりも小さくなることがわかる。
+依って高密度ほど電子管相互作用が相対的に小さくなる。
+
+\paragraph{等温圧縮率\(\kappa_T\)}について考えよう。
+まず\eqref{eq:2.2}より、
+\begin{equation}
+  P = \frac{2}{5}\varepsilon_F n \propto V^{-\frac{5}{3}}
+\end{equation}
+であり、
+\begin{equation}
+  \frac{1}{\kappa_T} - V \left( \pdv{P}{V} \right)_{T,N} =  \frac{5}{3}P = \frac{2}{3}\varepsilon_F n 
+\end{equation}
+となる。
+
+
+
+\paragraph{ナトリウムの原子で計算}
+原子体積が\(24 \mathrm{cm^3/mol}\)であり、\(N=6.02\times 10^{23} \mathrm{/mol}\)
+\(m= 9.107\times 10^{-31} \mathrm{kg}\)\(h=6.62\times 10^{-34}\mathrm{J\cdot s}\)
+\(k_B = 1.38 \times 10^{-23} \mathrm{J/K}\)より、
+\begin{equation}
+  \varepsilon_F = 5.01 \times 10^{-19} \mathrm{J} = 3.13 \mathrm{eV}
+\end{equation}
+となり\(T_F = 3.63 \times 10^4 K\)であり、室温\(\sim 300 \mathrm{K}\)になる。
+
+\subsection{状態密度\(D(E)\)}
+ここで、
+\begin{equation}
+  \sum_k \to  \left( \frac{L}{2\pi} \right)^3 \int_{0}^{\infty} 4 \pi k^2 \odif{k}
+\end{equation}
+となる。\(\bm{k} = \frac{2\pi}{L}\left( n_x,n_y,n_z \right)\)になるとき、
+\begin{equation}
+  \sum_k \to \left( \frac{L}{2\pi} \right)^2 \int^{\infty}_{0}2\pi k \odif{k}
+\end{equation}
+となる。
+一次元の時には、
+\begin{equation}
+  \sum_k \to \left( \frac{L}{2\pi} \right) \int^{\infty}_{0} \odif{k}
+\end{equation}
+
+また\(D(E)\)を用いると、
+\begin{equation}
+  \sum_k \to \int_{0}^{\infty}D(E) \odif{E}
+\end{equation}
+
+\paragraph{自由粒子の場合}
+自由粒子の場合には、
+\begin{equation}
+  E = \frac{\hbar^2 k^2}{2m} \quad  \odif{E} = \frac{\hbar^2 k}{m} \odif{k}
+\end{equation}
+となり、3次元の場合には、
+\begin{align}
+  \left( \frac{L}{2\pi} \right)^3 4\pi^2k^2 \odif{k} & = \left( \frac{L}{2\pi} \right)^3 4 \pi \frac{2mE}{\hbar^2} \frac{m}{\hbar^2} \left( \frac{\hbar^2}{2mE} \right)^{\frac{1}{2}} \odif{E} \\
+  & = \left( \frac{L}{2\pi} \right)^3 4 \pi \frac{2mE}{\hbar^2} \frac{m}{\hbar^2} \left( \frac{2m E}{\hbar^2} \right)^{\frac{1}{2}} \odif{E} \\
+\end{align}
+として、
+\begin{equation}
+  D(E) = \left( \frac{L}{2\pi} \right)^3 \frac{4\pi m}{\hbar^3} (2mE)^{\frac{1}{2}} \times g 
+\end{equation}
+となる。
+
+二次元の場合には、
+\begin{equation}
+  D(E) = \left( \frac{1}{2\pi} \right)^2 \frac{2\pi m}{\hbar^2} \times g 
+\end{equation}
+
+一次元の場合には、
+\begin{equation}
+  \frac{L}{\pi} \odif{k} = \frac{L}{\pi} \frac{m}{\hbar^2} \left( \frac{\hbar^2}{2mE} \right)^{\frac{1}{2}} \odif{E} = \frac{L}{\pi} \left( \frac{m}{2 \hbar^2} \right)^{\frac{1}{2}}E^{-\frac{1}{2}} \odif{E}
+\end{equation}
+となり、
+\begin{equation}
+  D(E) = \frac{L}{\pi} \left( \frac{m}{2\hbar^2} \right)^{\frac{1}{2}} E^{-\frac{1}{2}} \times g
+\end{equation}
+
+\paragraph{問題}
+2-3節の\(D(E)\)を導出せよ。
+
+
+
+
+
+
+
 
 
 

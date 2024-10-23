@@ -40,6 +40,164 @@ title=#1}
 \date{\today}
 \maketitle  
 
+\section{第3回}
+前回の復習から、考える。
+\begin{enumerate}
+  \item 自由電子は\(e^{ikx}\)でエネルギーは、\(\frac{\hbar^2k^2}{2m}\)運動量は\(\hbar k\)となる。
+  \item PBCCでは\(L=Na\)となり、
+  \begin{equation}
+    \varphi(x) = \varphi(x+L) = \varphi(x+Na)
+  \end{equation}
+  となり、\(k=\frac{2 \pi}{Na}\)の整数\(\frac{1}{\sqrt{L}}e^{ikx}\)となる、
+  \item 第一BZについては、
+  \begin{equation}
+    -\frac{\tau}{a} \le k \le \frac{\pi}{a}
+  \end{equation}
+  となる。独立な\(k\)のセットである。
+  \item \(a\)の並進対称性としては、
+  \begin{align}
+    \hat{T} \varphi(x) &= \varphi(x+a) = \varphi(x) \\
+    \hat{T} \varphi(k) &= e^{ika} \varphi(k)
+  \end{align}
+  となる。同じ固有値\(e^{ika}\)をもつ\(k\)の組
+  \begin{equation}
+    -\frac{\pi}{a} \le k \le \frac{\pi}{a}
+  \end{equation}
+  ととると、
+  \begin{align}
+    k = k_0 + k_m \\
+    k_m = \frac{2 \pi}{a}m
+  \end{align}
+  となる。
+\end{enumerate}
+\subsubsection{二次元の自由電子}
+二次元の自由電子では、
+\begin{equation}
+  -\frac{\hbar^2}{2m} \left( \pdv[order=2]{}{x} + \pdv[order=2]{}{y} \right)\varphi(x.y) = \varepsilon \varphi(x,y)
+\end{equation}
+となり、\(\varphi(x,y) = X(x)Y(y)\)と仮定する。
+すると、
+\begin{equation}
+  - \frac{\hbar^2}{2m} \pdv[order=2]{X}{x}Y(y) - \frac{\hbar^2}{2m} X(x) \pdv[order=2]{Y}{y} = \varepsilon X(x)Y(y)
+\end{equation}
+となることから、辺々を\(XY\)で割ると、
+\begin{equation}
+  X \propto e^{ik_x x}, Y \propto e^{ik_y y}
+\end{equation}
+となることから、\(\varepsilon_x = \frac{\hbar^2 k^2}{2m},\varepsilon_y = \frac{\hbar^2 k^2}{2m},\varepsilon_y\)となる。
+
+ここから、
+\begin{equation}
+  \exp \left( \bm{k}\cdot \bm{\Gamma} \right) = \exp\left( k_x x + k_y y \right)
+\end{equation}
+となる。
+エネルギーとしては、
+\begin{equation}
+  \varepsilon = \frac{\hbar^2}{2m}(k_x^2 + k_y^2)
+\end{equation}
+となる。
+さらに、運動量は、
+\begin{equation}
+  \bm{p} = \hbar \bm{k} = (\hbar k_x, \hbar k_y)
+\end{equation}
+となる。
+さらに、PBCは、
+\begin{equation}
+  \varphi(x,y) = \varphi(x+L,y) = \varphi(x,y+L)
+\end{equation}
+となることがわかる。\(e^{ik_xL}=e^{ik_yL}=1\)となる。ことから、規格化されて、
+\begin{equation}
+  k_x = \frac{2 \pi}{L}n_x, k_y = \frac{2 \pi}{L}n_y
+\end{equation}
+となり、規格化して、\(\int_{0}^{L}\int_{0}^{L}\odif{x,y}|\varphi|^2 =1\)となることから、
+\(A=\frac{1}{L}\)をとり、
+\begin{equation}
+  \varphi(x,y) = \frac{1}{\sqrt{L^2}}e^{i\bm{k}\cdot \bm{r}}
+\end{equation}
+となるために、第一BZは、\(-\frac{\pi}{a}\le k_x \le \frac{\pi}{a},-\frac{\pi}{a}\le k_y \le \frac{\pi}{a}\)となる。
+
+\subsubsection{\(a\)の並進対称性}
+
+\(a\)の並進対称性は、
+\begin{align}
+  \hat{T}_x \varphi(x,y) &= \varphi(x+a,y) = \varphi(x,y) \\
+  \varphi(x,y) & = \frac{1}{L}e^{i \bm{k}\cdot \bm{r}}\\
+  \hat{T}_x \varphi(x,y) & = e^{ik_x a} \varphi(x,y)\\
+  \varphi(x+a,y) & = \frac{1}{L} e^{i \bm{k}\cdot \bm{r}} \\
+  & = e^{ik_x a} \varphi(x,y)
+\end{align}
+となることから、
+第一BZ内の\(k_x\)に対して、
+\begin{equation}
+  k_x + k_{m_x}
+\end{equation}
+は、\(\hat{T}_x\)に対して、同じ固有値\(e^{ik_x a}\)を与える。
+\begin{equation}
+  K_{m_x} = \frac{2 \pi}{a}m_x
+\end{equation}
+ただし、\(m_x\)は整数である。どうように\(k_{m_y}=\frac{2\pi}{a}m_y\)が定義できる。
+
+\subsubsection{逆格子}
+実格子は\(a\)ずつの点であるが、逆格子は\(\frac{2\pi}{a}\)ずつの点のことである。
+
+二次元の場合には、逆格子は\(-\frac{\pi}{a}\le k_x \le \frac{\pi}{a},-\frac{\pi}{a}\le k_y \le \frac{\pi}{a}\)が第一BZになり、次は、\(k_x = \pm \frac{2\pi}{a},k_y = \pm \frac{2 \pi}{a}\)ｗそれぞれ結んだひし形から第一BZを引いた値である。
+
+さてもう少し抽象的なことをいおう。
+まずは実格子に必要なベクトルのことを
+\begin{equation}
+  \begin{cases}
+    \bm{a}_1 = a \bm{e}_x \\
+    \bm{a}_2 = a \bm{e}_y
+  \end{cases}
+\end{equation}
+となる。そして、逆格子は
+\begin{equation}
+  \begin{cases}
+    \bm{b}_1 = \frac{2\pi}{a}\bm{e}_x = \frac{2\pi}{a} \bm{e}_{k_x} \\
+    \bm{b}_2 = \frac{2\pi}{a}\bm{e}_y= \frac{2\pi}{a} \bm{e}_{k_y}
+  \end{cases}
+\end{equation}
+となる。
+
+\subsubsection{一般の二次元格子と逆格子}
+一般の二次格子を拡張しておく。
+\begin{equation}
+  |\bm{a}_1 | = | \bm{a}_2 | 
+\end{equation}
+となり、\( \bm{a}_1\)と\(\bm{a}_2\)は直交しない。
+対応する\(\bm{b}_1,\bm{b}_2\)はどう取ったらいいか？
+一次元の場合には、
+\begin{equation}
+  \exp\left( ika \right) = \exp\left( i \left( k + k_m \right)a \right)
+\end{equation}
+となり、\(k_m = \frac{2\pi}{a}m\)となる、
+二次元正方格子の場合には、
+\begin{equation}
+  \exp \left( i \bm{k} \cdot \bm{r} \right) \to \exp\left( \bm{k}\left( \bm{r} + \bm{a} \right) \right)  
+\end{equation}
+となる。ここから、\(\bm{K}\cdot \bm{a}\)が\(2 \pi\)の整数倍になるようにする。
+ここで、\(\bm{a}_1\cdot \bm{b}_1 = 2\pi,\bm{a}_1 \cdot \bm{b}_2= \bm{a}_2 \cdot \bm{b}_1 = 0, \bm{a}_2 \cdot \bm{b}_2 = 2\pi\)となることを用いて、
+\begin{align}
+  \bm{k} & = n_1 \bm{b}_1 + n_2 \bm{b}_2 \\
+  \bm{k}\cdot \bm{a} & = (m_1 \bm{b}_1 + m_2 \bm{b}_2) \cdot (n_1 \bm{a}_1 + n_2 \bm{a}_2) \\
+   & = m_1 n_1 \bm{a}_1 \bm{b}_1 + m_2 n_2 \bm{a}_2 \bm{b}_2 + m_1 n_2 \bm{a}_1 \bm{b}_2 + m_2 n_1 \bm{a}_2 \bm{b}_1\\
+   & = 2 \pi (m_1 n_1 + m_2 n_2)
+\end{align}
+
+これから、これを拡張すると、一般の\(\bm{a}_1,\bm{a}_2\)に対して、
+\begin{equation}
+  \begin{cases}
+    \bm{a}_1 \cdot \bm{b}_1 = 2 \pi \\
+    \bm{a}_1 \cdot \bm{b}_2 =\bm{a}_2 \cdot \bm{b}_1 =0 \\
+    \bm{a}_2 \cdot \bm{b}_2 = 2 \pi
+  \end{cases}
+\end{equation}
+となるように\(\bm{b}_1,\bm{b}_2\)となるように決める。
+
+第三回の画像を見ながら
+逆格子の世界には色がない。違う原子があったから撮って色が違うわけではない。色が互い違いにちがうときに、同じところに戻って来るのは\(2a\)である。
+
+逆格子の世界に種類はないので、最小になるように選ぶ。
 
 
 \end{document}

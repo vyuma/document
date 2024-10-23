@@ -211,6 +211,95 @@ title=#1}
 \subsubsection{仕事と熱の等価性}
 仕事と熱であり、比例同じ量の異なる表現であり、エネルギーの流れとしての等価性がある。
 
+\begin{description}
+  \item[前提1.7] i過程版カルノーの原理
+\end{description}
+ケルビンの原理がある。
+
+ケルビンの定理により、カルノー機関の効率性を見出すことが出来る。
+証明をしよう。
+
+\paragraph{証明}
+二段階に分けて考える。
+\begin{enumerate}
+  \item 最高効率\(\eta_c\)の期間であるカルノー機関を見つける
+  \item \(\eta\)より小さい機関の効率を示そう。
+\end{enumerate}
+過程1については\((T_+,V_0)\to (T_+;V_1)\)\(Q[T_+; V_0 \to V_1]\)となる。
+カルノー機関としては、1qsなら\(W\)は最大になる。さらに\(T_+\)でサイクル\(W<0\)となり、\(T_+\)から\(T_-\)へ、
+
+過程2としては、\((T_+;V_1)\to (T_-;V_3)\)となる。この過程は断熱過程である。あとは、過程3について、\((T_-,V_3)\to (T_-,V_2)\)と\((T_-,V_2)\to (T_+,V_0)\)となる。そこからカルノー機関\(C[T_+,T_-,V_0,V_1,V_2,V_3]\)
+のみからな逆過程が実装できる。
+熱機関の効率は、
+\begin{equation}
+  \eta = \frac{Q[T_+;V_0\to V_1]+ Q[T_-;V_3\to V_2]}{Q[T_+;V_0\to V_1]}
+\end{equation}
+であることから、\(\eta_c\)は、\(T_+,T_-\)のみによって決まり、物質の種類\(N,V_0,V_1,V_2,V_3\)に依らないことがわかる。
+任意の\(T_+,T_-\)の熱浴を持つ任意の機関の効率\(\eta\)は\(\eta_c\)を超えない。ほかの任意の機関の効率は\(\eta_c\)を超えない。
+
+方針は\(D+\alpha \times \text{逆カノニカル}\)
+\(T_+\)との熱のやり取りなし、とするとケルビンの定理より、\(D\)は\(T_+\)との熱のやり取りをする。
+\(Q_{D_+}\)は、\(T_+\)熱浴から\(D\)が吸収する熱量。\(Q_{Q_+}\)は\(D\)がする仕事であり、
+
+逆カルノーとしては、
+\begin{equation}
+  \begin{cases}
+    Q[T_+;V_0\xrightarrow{iqs}V_1] :  T_+\text{に放出する熱量} \\
+    \eta_c : Q[T_+;V_0 \xrightarrow{iqs}V_1] : 逆カルノーのされる仕事
+  \end{cases}
+\end{equation}
+このようにすると、逆カルノーのサイズの調整として、\(D_+\)として、示量性湯おｒ、
+\begin{equation}
+  Q_{D_+} = Q[T_+,\alpha V_0 \xrightarrow{iqs} \alpha V_1] = \alpha Q[T_+;V_0\xrightarrow{iqs}V_1]
+\end{equation}
+となるために
+\begin{equation}
+  \alpha = \frac{Q_{D+}}{Q[T_+,V_0 \xrightarrow{iqs}V_1]}
+\end{equation}
+となり、\(T_-\)が熱浴ならば、吸収する仕事の量は、
+\begin{align}
+  W_{total} & = \eta  Q_{D+} - \eta Q[T_+;V_0\xrightarrow{iqs}V_1]\\
+  & = \eta Q_{D_+} - \eta Q_{D_+} \le 0
+\end{align}
+となることから、\(\eta \le \eta_c\)
+
+効率\(\eta_c\)を超える2-T機関は損z内しないことを考える。
+カルノーサイクルを考えるときに\(\eta'\le \eta_c\)と\(\eta_c\le \eta'\)となることから、カルノーサイクルは一意に定まることが言える。
+
+カルノーの定理から、次の定理が言える。
+\paragraph{定理1.4}2つのカルノー機関\(C[T_+,T_-;V_0,V_1,V_2,V_3;N]C[T_+,T_-,V_1',V_2',V_3',N']\)について、
+\begin{equation}
+  \frac{Q[T_-;V_2\xrightarrow{iqs}V_3]}{Q[T_+;V_0\xrightarrow{iqs}V_1]} = \frac{Q[T_+;V_0\xrightarrow{iqs}V_1']}{Q[T_-;V_2'\xrightarrow{iqs}V_3']}
+\end{equation}
+
+\paragraph{定義1.2}
+絶対温度が\(T>T_\ast\)の時、
+\begin{equation}
+  \Theta(T) = \frac{Q[T;V_0\xrightarrow{iqs} V_1]}{Q[T_*:V_{0\ast}\xrightarrow{iqs}V_{1\ast}]}\Theta(T)_\ast  
+\end{equation}
+となる。
+ここで、
+\(\Theta_\ast\)と\(T_\ast\)を対応させる。
+すると\(\Theta_\ast\)と\(T_\ast\)は同値になる。
+以下もこれまで同様に絶対温度に対して\(T\)をとろう。
+\paragraph{定理1.5}
+絶対温度\(T\)と\(Q\)任意のカルノー機関\(C[T_+,T_-,V_0,V_1,V_2,V_3]\)に対して、
+\begin{equation}
+  \frac{Q[T_0;V_0\xrightarrow{iqs}V_1]}{T_+} = \frac{Q[T_+;V_0\xrightarrow{iqs}V_1]}{T_-}
+\end{equation}
+となる。そもそも\(Q,W\)は異なる。
+
+
+\subsection{エントロピー}
+エントロピーは、\(\varepsilon_g\)状態から\(\varepsilon_g\)状態へ\(\alpha\)過程を経てrたどり着ける状態を順序関係・不等式を用いて表す。
+
+\subsubsection{不可逆過程}
+言葉の曖昧さを取り払うために\(a\)過程に限ろう。
+\paragraph{定義1.3}不可逆過程にある\(\alpha\)過程について、始状態と終状態とを逆にした\(\alpha\)過程が可能ならば、可逆過程である。
+
+可逆過程ではない過程を
+不可逆過程\((T,V)\xrightarrow{a}(T',V')\)かつ\(X((T',V')\xrightarrow{a}(T,V))\)となる。
+
 
 
 
