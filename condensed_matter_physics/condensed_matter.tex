@@ -199,5 +199,218 @@ title=#1}
 
 逆格子の世界に種類はないので、最小になるように選ぶ。
 
+\(\bm{a}_i\)を基本並進ベクトルであり\(\bm{b}_j\)は基本逆格子ベクトルであり、\(\bm{a}_i \bm{b}_j=2\pi \delta_{ij}\)となる。
+
+\section{四回目}
+
+\subsubsection{ブラケット記法}
+\(\ket{n}\)状態の\(n\)に対するケットベクトルは縦ベクトルであり、\(\bra{m}\)は、
+\begin{equation}
+  \braket{m}{n} = \int \odif[order=3]{r} \varphi_m^*(\bm{r})\varphi_n(\bm{r})
+\end{equation}
+となり、
+\begin{equation}
+  \mel{m}{\hat{A}}{n} = \int \odif[order=3]{r} \varphi_m^*(\bm{r})\hat{A}\varphi_n(\bm{r}) = A_{mn}
+\end{equation}
+となり、行列要素となる。
+正規直交基底としては、
+\begin{equation}
+  \braket{m}{n} = \delta_{mn}
+\end{equation}
+となり、完全系条件は、
+\begin{equation}
+  \sum_{n} \ket{n}\bra{n} = 1
+\end{equation}
+となる。
+
+\subsubsection{変分法}
+変分法とは、
+\begin{equation}
+  \hat{H} \ket{n} = \varepsilon_n \ket{n}
+\end{equation}
+としてあげると、\(\braket{m}{n} = \delta_{mn}\)となる。
+
+個々かから任意の状態\(\ket{\varphi} = \sum_n c_n \ket{n}\)
+とすると、
+\begin{align}
+  \mel{\varphi}{\hat{H}}{\varphi}  & = \sum_{m,n} c_m^* c_n \mel{m}{\hat{H}}{n} = \sum_{m,n} c_m^* c_n \varepsilon_n \\
+  & = \sum_{n} |c_n|^2 \varepsilon_n \\
+  & = \sum_n \varepsilon_n |c_n|^2
+\end{align}
+となる。\(\varepsilon_n\)を\(\varepsilon_0\)に置き換えることである。
+すると、
+\begin{equation}
+  \mel{\varphi}{\hat{H}}{\varphi}  = \sum_n \varepsilon_n |c_n|^2 \ge \varepsilon_0 \sum_n |c_n|^2 = \varepsilon_0
+\end{equation}
+となるので、近似の波動関数は基底状態よりも大きなエネルギー状態を持つということである。
+
+
+\(\ket{\varphi}\)を見つけて。低い値が見つかればそれは基底状態であることがわかる。
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,235); %set diagram left start at 0, and has height of 235
+
+%Shape: Circle [id:dp19702952708400878] 
+\draw   (188,89.5) .. controls (188,53.33) and (217.33,24) .. (253.5,24) .. controls (289.67,24) and (319,53.33) .. (319,89.5) .. controls (319,125.67) and (289.67,155) .. (253.5,155) .. controls (217.33,155) and (188,125.67) .. (188,89.5) -- cycle ;
+%Shape: Circle [id:dp25568216024195967] 
+\draw   (278,92.5) .. controls (278,59.64) and (304.64,33) .. (337.5,33) .. controls (370.36,33) and (397,59.64) .. (397,92.5) .. controls (397,125.36) and (370.36,152) .. (337.5,152) .. controls (304.64,152) and (278,125.36) .. (278,92.5) -- cycle ;
+%Straight Lines [id:da15186294309395065] 
+\draw    (280,200) -- (376.3,140.22) ;
+\draw [shift={(378,139.17)}, rotate = 148.17] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da17817439842273108] 
+\draw    (280,200) -- (199.54,133.44) ;
+\draw [shift={(198,132.17)}, rotate = 39.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da24566407788550237] 
+\draw    (280,200) -- (336.56,94.26) ;
+\draw [shift={(337.5,92.5)}, rotate = 118.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8593339210624895] 
+\draw    (280,200) -- (253.97,91.44) ;
+\draw [shift={(253.5,89.5)}, rotate = 76.51] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (211,172.4) node [anchor=north west][inner sep=0.75pt]    {$r_{1}$};
+% Text Node
+\draw (325,179.4) node [anchor=north west][inner sep=0.75pt]    {$r_{2}$};
+% Text Node
+\draw (235,113.4) node [anchor=north west][inner sep=0.75pt]    {$R_{1}$};
+% Text Node
+\draw (330,120.4) node [anchor=north west][inner sep=0.75pt]    {$R_{2}$};
+% Text Node
+\draw (235,32.4) node [anchor=north west][inner sep=0.75pt]    {$H^{+}$};
+% Text Node
+\draw (342,47.4) node [anchor=north west][inner sep=0.75pt]    {$H^{+}$};
+
+
+\end{tikzpicture}
+
+となり、画像の中の文字はすべてベクトルとして考える。
+ここで、水素原子のハミルトニアンを考えると、
+\begin{equation}
+  \hat{H} = -\frac{\hbar^2}{2m} (\nabla_1^2 + \nabla_2^2) - \frac{e^2}{4\pi \varepsilon_0 } \sum^2_{i=1} \sum^2_{j=1} \frac{1}{|\bm{r}_i-\bm{R}_j|} +  \frac{e^2}{4\pi \varepsilon_0 |\bm{r}_i-\bm{r}_j|}
+\end{equation}
+となり、\(H^+\)からの引力と電子同士の斥力の輪でわかる。
+\(\bm{r}_1\)に注目し、\(\bm{r}_2\)は平均値\(\ev{\bm{r}_2}\)でおきかえる。
+
+すると、
+\begin{equation}
+  \hat{H}_2 = -\frac{\hbar^2}{2m} \nabla_1^2 -\frac{e^2}{4\pi \varepsilon_0} \left( 
+    \frac{1}{|\bm{r}_1-\bm{R}_1|} + \frac{1}{|\bm{r}_1-\bm{R}_2|} 
+   \right) 
+   + \frac{e^2}{4\pi \varepsilon_0} \frac{1}{|\bm{r}_1-\ev{\bm{r}_2}|}
+\end{equation}
+となる。
+
+試行関数を使ってみる。
+\begin{equation}
+  \ket{\varphi} = c_1 \ket{1} + c_2 \ket{2}
+\end{equation}
+となる。ここで、\(\ket{c_1}\)は原子1の1s軌道であり、\(\ket{c_2}\)は原子2の1s軌道である。
+水素分子の変分法としては、電子1は原子1の1s軌道であるか？原子2の1s軌道のどりかということである。
+
+
+変分法の肝はtrial functionとして、求まったもので基底状態のエネルギーを求めることである。
+
+この時、\(\ket{1}\)を\(\ket{\varphi}\)にかける
+\begin{align}
+  \mel{1}{\hat{H}_2}{\varphi}  & = \mel{1}{\hat{H}_2}{1}c_1 + \mel{1}{\hat{H}_2}{2}c_2\\
+  & = \varepsilon c_1 + s\varepsilon c_2
+\end{align}
+となるはずである。ここで、。\(\mel{1}{\hat{H}}{2}=t\)である。
+
+
+この時に、
+\begin{align}
+  \mel{\varphi}{\hat{H}_2}{\varphi} & = \int \odif[order=3]{r} \phi^\ast \left( -\frac{\hbar^2}{2m}\nabla^2_1 + \frac{e^2}{4\pi \varepsilon}\frac{1}{|\bm{r}_1-\bm{R_1}|} \right) \varphi + 
+  \int \odif[order=3]{r} \phi^\ast \left( \frac{-e^2}{4\pi \varepsilon}\frac{1}{|\bm{r}_1-\bm{R_2}|}+ \frac{e^2}{4\pi \varepsilon}\frac{1}{|\bm{r}_1-\ev{\bm{r_2}}|} \right) \varphi \\
+  & \simeq  \int \odif[order=3]{r} \phi^\ast \left( -\frac{\hbar^2}{2m}\nabla^2_1 + \frac{e^2}{4\pi \varepsilon}\frac{1}{|\bm{r}_1-\bm{R_1}|} \right) \varphi + 0
+\end{align}
+
+電子の位置に対して対称なハミルトニアンであるために、電子1が原子1にいてさらに電子2モ電子2にいるような確率はほとんど0としてよい。すると、\(\ev{\bm{r}_2} \simeq \bm{R}_2\)であるから、第二項は0としてもよい。そして第一項は\(\varepsilon_{1s}\)と同じ。
+ここから、まったく同様に\(\ket{2}\)を使うと、
+
+\begin{equation}
+  \begin{cases}
+    c_1 \varepsilon_{1s} + c_2 t = c_1 \varepsilon  + c_2 \varepsilon s\\
+    c_1 t + c_2 \varepsilon_{1s} = c_1 \varepsilon s + c_2 \varepsilon
+  \end{cases}
+\end{equation}
+この解の非自明なものを考えると、
+\begin{equation}
+  \varepsilon = \frac{\varepsilon_{1s}\pm t}{1\pm s}
+\end{equation}
+となる。
+\(t= \mel{1}{\hat{H}_2}{2}\)1s軌道の場合ならマイナスである。
+
+重なった時の波動関数の＋とマイナスについて考える。
+簡単のために、\(s=0\)とすると。\(\varepsilon_{12}+t\)に対して、\(c_1=c_2=\frac{1}{\sqrt{2}}\)であり\(\varepsilon_{12}-t\)に対して\(c_1=-c_2 = \frac{1}{\sqrt{2}}\)となることがｗ耀。
+第一励起状態は、\(\varepsilon_{12}+t\)となり、
+\begin{align}
+  \begin{cases}
+    \varepsilon_{12} + t & \frac{1}{\sqrt{2}}\left( \ket{1} + \ket{2} \right) \text{結合軌道}\\
+    \varepsilon_{12} - t & \frac{1}{\sqrt{2}}\left( \ket{1} - \ket{2} \right) \text{反結合軌道}
+  \end{cases}
+\end{align}
+
+\subsubsection{水素の一次元結合}
+格子間隔は\(a\)としよう。
+\begin{equation}
+  \hat{H}_N = - \frac{\hbar^2}{2m} \nabla_1^2 - \frac{e^2}{4\pi \varepsilon_0} \frac{1}{|\bm{r}_1- n\bm{a}|} + \frac{e^2}{4\pi \varepsilon_0} \sum^N_{n=1} \frac{1}{|\bm{r}_1-\ev{\bm{r}_2}|}
+\end{equation}
+となる。
+\begin{equation}
+  \hat{H}\ket{\varphi} = \varepsilon \ket{\varphi}
+\end{equation}
+となり、\(\ket{\varphi} = \sum_{n=1}^{N}c_n \ket{n}\)となり、
+左から\(\bra{m}\)を書けると、前回とまったく同じ議論をすれば、
+\begin{align}
+  \mel{n}{\hat{H}_N}{n} = \varepsilon_{1s} \\
+  \braket{m}{n} = 1 \\
+  \mel{m}{\hat{H}_N}{n} = t (m=n \pm 1) \\
+  \braket{m}{n} = s (m = n \pm 1) \\
+  \mel{m}{\hat{H}_N}{n} = \mel{m}{\varepsilon}{\varphi}
+\end{align}
+となる。
+ここから、
+\begin{equation}
+  \sum_{n=1}^{N}c_n \mel{m}{\hat{H}}{n} = \varepsilon \sum_{n=1}^{N}c_n \braket{m}{n}
+\end{equation}
+となることから
+\begin{equation}
+  t c_{m-1} + \varepsilon_{1s} c_m + t c_{m+1}  = \varepsilon c_m + \varepsilon s c_{m-1} + \varepsilon s c_{m+1}
+\end{equation}
+となり、連戦振動の回と波動の解を持つ。
+ここで数理物理学で考えたことを考えると、
+\begin{equation}
+  c_m = e^{ikam}
+\end{equation}
+を代入してあげると、
+\begin{equation}
+  t e^{-ika} + \varepsilon_{1s} + t e^{ika} = \varepsilon + \varepsilon s e^{-ika} + \varepsilon s e^{ika}
+\end{equation}
+からエネルギーを求めることは簡単で、実数部分をとってあげると
+\begin{equation}
+  \varepsilon = \frac{\varepsilon_{12}+2t \cos (ka)}{1+2s \cos(ka)}
+\end{equation}
+となる。
+
+ここから、\(s\simeq 0\)とすると、
+\begin{equation}
+  \varepsilon \simeq \varepsilon_{12} + 2 t \cos(ka)
+\end{equation}
+となる。
+
+
+
+
+
+
+
+
+
+
 
 \end{document}

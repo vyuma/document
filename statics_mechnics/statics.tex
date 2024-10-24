@@ -611,12 +611,158 @@ Bのエントロピーを\(S_B\)とすると、
 2-3節の\(D(E)\)を導出せよ。
 
 
+\subsection{フェルミ気体の有限温度の性質}
+フェルミ分布関数については、
+\begin{equation}
+  f(\varepsilon) = \frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}
+\end{equation}
+一般の物理量\(A(\varepsilon)\)の期待値を計算すると、
+\begin{equation}
+  \ev{A}_T = \int_{-\infty}^{\infty} A(\varepsilon)f(\varepsilon)D(\varepsilon) \odif{\varepsilon}
+\end{equation}
+となることがわかる。ここで、\(f(\varepsilon)\)は一状態の電子数である。
+さてこの時の温度依存性は
+\begin{align}
+  \ev{A}_T & = \int_{-\infty}^{\infty} A(\varepsilon)f(\varepsilon)D(\varepsilon) \odif{\varepsilon}\\
+  & = \ev{{A}}_{T = 0} + a T^2 + O(T^4)
+\end{align}
+となる。
+\(f_B(T)\)が幅\(k_BT\)に広がる。\(\mu\)の温度変化については、図のようになる。
 
 
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Axis 2D [id:dp07737089035535272] 
+\draw  (229,243.55) -- (489,243.55)(255,82) -- (255,261.5) (482,238.55) -- (489,243.55) -- (482,248.55) (250,89) -- (255,82) -- (260,89)  ;
+%Curve Lines [id:da7783880358702222] 
+\draw    (307,149) .. controls (362,144.5) and (334,237.5) .. (394,233.5) ;
+%Straight Lines [id:da19423447951803552] 
+\draw    (221,149) -- (307,149) ;
+%Straight Lines [id:da4400596775089036] 
+\draw    (394,233.5) -- (480,233.5) ;
+
+% Text Node
+\draw (367,248.4) node [anchor=north west][inner sep=0.75pt]    {$\mu $};
+% Text Node
+\draw (497,238.4) node [anchor=north west][inner sep=0.75pt]    {$T$};
+% Text Node
+\draw (215,61.4) node [anchor=north west][inner sep=0.75pt]    {$f( \varepsilon )$};
 
 
+\end{tikzpicture}
 
 
+ゾンマーフェルトの展開公式としては、
+任意関数\(g(\varepsilon)\)として、
+\begin{equation}
+  G(\varepsilon) = \int_{-\infty}^{\varepsilon}g(\varepsilon') \odif[order=3]{\varepsilon'}
+\end{equation}
+となり、\(f(\infty)=0,G(-\infty)=0\)となる。
+\begin{align}
+  \int_{-\infty}^{\infty}\odif[order=3]{\varepsilon} g(\varepsilon) f(\varepsilon)  & = \left[ G(\varepsilon)f(\varepsilon) \right]^{\infty}_{-\infty} - \int_{-\infty}^{\infty}G(\varepsilon) \pdv{f(\varepsilon)}{\varepsilon}\odif{\varepsilon} \\
+  & = G(\infty)f(\infty) - G(-\infty)f(-\infty) + \int_{-\infty}^{\infty}G(\varepsilon)\left( -\pdv{f}{\varepsilon} \right) \odif{\varepsilon}\\
+  & = \int_{-\infty}^{\infty}G(\varepsilon)\left( -\pdv{f}{\varepsilon} \right) \odif{\varepsilon}
+\end{align}
+となる。
+ここから、
+\begin{equation}
+  -\pdv{f}{\varepsilon} = \frac{\beta e^{\beta(\varepsilon-\mu)}}{\left[ e^{\beta(\varepsilon-\mu)} +1\right]^2} = \frac{\beta}{4}\frac{1}{\cosh\left( \frac{\beta}{2}(\varepsilon-\mu) \right)}
+\end{equation}
+となる。
+
+\(-\left( \pdv{f}{\varepsilon} \right)\)の性質は以下のようになる。
+\begin{equation}\label{eq:2.3}
+  -\pdv{f}{\varepsilon} = 
+  \begin{cases}
+    \int_{-\infty}^{\infty}\left( -\pdv{f }{\varepsilon} \right)\odif{\varepsilon} = 1 \\
+    \left( -\pdv{f}{\varepsilon} \right)_{T=0} = \delta(\varepsilon-\mu)\\
+    \int_{-\infty}^{\infty}\left( - \pdv{f}{\varepsilon} \right)(\varepsilon-\mu) \odif{\varepsilon} = 0\\
+    \int_{-\infty}^{\infty}\left( -\pdv{f}{\varepsilon} \right)(\varepsilon-\mu)^2 \odif{\varepsilon} = \frac{\pi^2}{3}(k_BT)^2
+  \end{cases}
+\end{equation}
+となる。
+
+\paragraph{問題}
+式\eqref{eq:2.3}の導出をおこなおう！！
+
+
+\(G(\varepsilon)\)を\(\varepsilon=\mu\)の周りで二次まで展開することをする。
+テイラー展開をおこなおう！テイラー展開の二時まで行うと、
+\begin{equation}
+  G(\varepsilon) = G(\mu) + (\varepsilon-\mu) G'(\varepsilon) + \frac{1}{2}(\varepsilon-\mu)^2G''(\varepsilon) + \cdots 
+\end{equation}
+となり、
+\begin{equation}\label{eq:2.4:ゾンマーフェルト展開公式}
+  \int_{-\infty}^{\infty} \odif{\varepsilon} G(\mu) + \frac{\pi^2}{6}(k_BT)^2 G''(\mu) + \cdots 
+\end{equation}
+となる。これをゾ―マンフェルト展開公式という。
+
+\(  \ev{A}_T = \int_{-\inftyは式}^{\infty} D(\varepsilon)A(\varepsilon)f(\varepsilon) \odif[order=3]{\varepsilon}\)となることから、\eqref{eq:2.4:ゾンマーフェルト展開公式}で\(g(\varepsilon)=D(\varepsilon)A(\varepsilon)\)としたものであり、
+\begin{equation}\label{eq:2.5}
+  \ev{A}_T = \ev{A}_{T=0} + \frac{\pi^2}{6}(k_BT)^2 G''(\mu)+ \cdots
+\end{equation}
+ここで、\(\mu=\mu_0+\Delta \mu(T)\)として低温のために\(\varDelta \mu (T)\)が小さいとする。
+\begin{equation}
+  G(\mu) = \int_{-\infty}^{\mu_0} \odif{\varepsilon} g(\varepsilon) + \int_{\mu_0}^{\mu_0+\delta \mu}\odif{\varepsilon}g(\varepsilon) = \ev{A}_{T=0} + D(\mu_0)A(\mu_0)\Delta \mu(T) + \cdots
+\end{equation}
+となる。
+
+
+\eqref{eq:2.5}を\(T\)2次までで展開すると、
+\begin{equation}\label{eq:2.6}
+  \ev{A}_T = \ev{A}_{T=0} + \frac{\pi^2}{6}(k_BT)^2 D(\mu_0)A(\mu_0)\varDelta \mu(T) + \frac{\pi^2}{6}(k_BT)^2 \pdv{}{\varepsilon}(D(\varepsilon)A(\varepsilon))\Big|_{\varepsilon=\mu_0} + O(T^2)
+\end{equation}
+となる。
+この時粒子数\(N(T)\)を計算する。
+
+\paragraph{粒子数を計算する}
+粒子数\(N(T)\)を計算しよう。\(A(\varepsilon)=1\)である。
+式\eqref{eq:2.6}より\(T\)の二次まで求めると、
+\begin{equation}
+  N(T) \sim N(0) + D(\mu_0)\Delta \mu(T) + \frac{\pi^2}{6}(k_BT)^2 D'(\mu_0)
+\end{equation}
+となり、粒子数は温度に依らないために、\(N(T)=N(0)\)依って、
+\begin{equation}\label{eq:2.7}
+  \varDelta \mu(T) = -\frac{D'(\mu_0)}{D(\mu_0)}\frac{\pi^2}{6}(k_BT)^2
+\end{equation}
+となる。
+
+
+3次元自由粒子の場合には、\(D(\varepsilon)=C_0\varepsilon^{\frac{1}{2}}\)
+\begin{equation}
+  \varDelta \mu(T) = -\frac{1}{2\mu_0} \frac{\pi^2}{6}(k_BT)^2 = -\frac{\pi^2}{12\mu_0}(k_BT)^2
+\end{equation}
+同様に1次元の場合には、
+\begin{equation}
+  D(\varepsilon) = C_0\varepsilon^{-\frac{1}{2}} , \quad \varDelta \mu(T) = \frac{\pi^2}{12 \mu_0}(k_BT)^2
+\end{equation}
+となる。二次元の場合は異なる方法で計算する必要があり、
+\begin{equation}
+  \varDelta \mu(T) = -k_BT e^{-\frac{\mu_0}{k_BT}}
+\end{equation}
+となる。
+
+\paragraph{エネルギー\(U(T)\)を計算する}
+エネルギー\(U(T)\)は、
+\begin{equation}
+  U(T) \sim U(T=0) + D(\mu)\mu_0 \varDelta \mu(T) + \frac{D(\varepsilon)\varepsilon}{\varepsilon}\Big|_{\mu_0}\frac{\pi^2}{6}(k_BT)^2
+\end{equation}
+\eqref{eq:2.7}より、
+\begin{equation}
+  D(\mu_0)\mu_0 \varDelta \mu(T) = -\mu_0 D'(\mu_0)\frac{\pi^2}{6}(k_BT)^2
+\end{equation}
+と用いて、
+\begin{equation}
+  U(T) \sim U(T=0) + D(\mu_0) \frac{\pi^2}{6}(k_BT)^2 
+\end{equation}
+依ってフェルミ気体の低温比熱は
+\begin{equation}
+  C = \pdv{U}{T} = \frac{\pi^2}{3}k_BT^2 D(\mu_0) T = \gamma T 
+\end{equation}
+となりフェルミ気体の低温比熱の直観的説明として、
 
 
 \end{document}
