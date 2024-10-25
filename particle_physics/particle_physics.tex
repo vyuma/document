@@ -101,17 +101,276 @@ title=#1}
 素粒子の質量はかなり持っている。
 
 
+\section{Dirac方程式}
+負のエネルギー解が出てしまう。ので、確率密度が負となってしまう。そこで相対論的に従うような方程式を作ることが出来ないだろうか？つまり、時間微分に対して線形な方程式を作らなければならない。
+方程式が共変であるためには空間微分\(\nabla\)についても線形のはずである。
+
+相対論は時間的に流れていて、そこに空間の一変化がある。相対論は時空
 
 
+Dirac 方程式
+
+Klein-Gordon 方程式は、負のエネルギー解をもち、確率密度が負となってしまう！
+負の確率を避けて、相対論（ \(E^2=p^2+m^2\) ）に従う方程式を作れないか？
+\(\rightarrow \partial / \partial t\) について線形の方程式を考えよう！
+さらに、方程式が共変的であるためには \(\nabla\) についても線形のはず
+\(\rightarrow\) 一般的な形は、
+
+\begin{align*}
+H \psi=(\boldsymbol{\alpha} \cdot p+\beta m) \psi
+\end{align*}
 
 
+と書け、相対論的なエネルギーと運動量の関係；
+
+\begin{align*}
+H^2 \psi=\left(p^2+m^2\right) \psi
+\end{align*}
 
 
+を満たす。
+\(\rightarrow\)
+
+\begin{align*}
+\begin{gathered}
+H^2 \psi=\left(\alpha_i P_i+\beta m\right)\left(\alpha_j P_j+\beta m\right) \psi=\left(p^2+m^2\right) \psi \\
+\therefore \alpha_i^2=1, \quad \alpha_i \alpha_j+\alpha_j \alpha_i=0, \quad \alpha_i \beta+\beta \alpha_i=0, \quad \beta^2=1
+\end{gathered}
+\end{align*}
+
+\(\rightarrow\)
+- \(\alpha_1, \alpha_2, \alpha_3, \beta\) はすべて反交換
+
+\begin{align*}
+\text { - } \alpha_1^2=\alpha_2^2=\alpha_3^2=\beta^2=1
+\end{align*}
+
+\(\therefore \alpha_i\) と \(\beta\) は単なる数ではなくて（ \(\psi\) に作用する）行列であり、 \(\psi\) は多成分列ベクトル である。
 
 
+Dirac-Pauli 表現
+
+式（4）を満たす最低次元の行列は 4 行 4 列（一義的には決まらない）。
+Dirac-Pauli 表現 ;
+
+\begin{align*}
+\boldsymbol{\alpha}=\left(\begin{array}{cc}
+0 & \boldsymbol{\sigma} \\
+\boldsymbol{\sigma} & 0
+\end{array}\right), \quad \beta=\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right)
+\end{align*}
+
+\(\sigma\) （Pauli 行列）；
+
+\begin{align*}
+\sigma_1=\left(\begin{array}{ll}
+0 & 1 \\
+1 & 0
+\end{array}\right), \quad \sigma_2=\left(\begin{array}{cc}
+0 & -i \\
+i & 0
+\end{array}\right), \quad \sigma_3=\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right)
+\end{align*}
 
 
+Dirac 方程式を満たす 4 成分列ベクトル \(\psi\) を Dirac スピノールと呼ぶ。
+Dirac 方程式の解は、Klein-Gordon 方程式でみた 2 つの正負のエネルギー解だけでな く 4 つある!
 
+このように4行4列の行列を用いて表現することが出来る。
+Dirac方程式の解は正負のエネルギー解だけでなく二つある。
+
+Dirac方程式を4限部分ベクトルをmのちいて相対論になじむ形に変形する。
+\begin{equation}
+  i \gamma^{\mu} \partial_{\mu} \psi - m \psi = 0
+\end{equation}
+ここで、\(\gamma^{\mu}\)はDiracの\(\gamma\)行列であり、
+\begin{equation}
+  \gamma^{\mu} = \left( \beta,\beta \bm{\alpha} \right)
+\end{equation}
+のように書くことが出来て、Dirac方程式は列ベクトル\(\psi\)の4成分の連立方程式として、
+\begin{equation}
+  \sum_{i=1}^{4}\left\{ \sum_{i} (\gamma^{\mu})_{jk} \partial_{\mu} - m\delta_{lk} \right\}\psi_k = 0
+\end{equation}
+となっている。
+
+4成分の方程式になっている。\(\psi\)は4成分あることになっている。
+
+4成分のカレントについて考えよう。
+エルミート共益について考えると、
+\begin{equation}
+  (i \gamma^{\mu} \partial_\mu -m )\psi = 0
+\end{equation}
+となる。これをエルミート共役をとると。
+\begin{equation}
+  \partial_\mu\bar{\psi} (i \gamma^{\mu} -m ) = 0
+\end{equation}
+
+ここで、\(\bar{\psi}= \psi^{\dagger\gamma^0}\)を随伴スピノールという。
+
+\(\rightarrow \bar{\psi} \times\) 式 (10)+式（11） \(\times \psi\) から、
+
+\begin{align*}
+\bar{\psi} \gamma^\mu \partial_\mu \psi+\left(\partial_\mu \bar{\psi}\right) \gamma^\mu \psi=\partial_\mu\left(\bar{\psi} \gamma^\mu \psi\right)=0
+\end{align*}
+
+\(\rightarrow\)
+
+\begin{align*}
+j^\mu=\bar{\psi} \gamma^\mu \psi
+\end{align*}
+
+
+は連続の式を満たし、確率密度；
+
+\begin{align*}
+\rho \equiv j^0=\bar{\psi} \gamma^0 \psi=\psi^{\dagger} \psi=\Sigma_{i=1}^4\left|\psi_i\right|^2
+\end{align*}
+
+
+は正値確定となる!
+電子の 4 元電流密度は
+
+\begin{align*}
+j^\mu=-e \bar{\psi} \gamma^\mu \psi
+\end{align*}
+
+
+と書ける。
+
+
+\subsection{自由粒子のスピノール}
+自由粒子の場合には、
+\begin{equation}
+  \psi = u(p) e^{-ipx}
+\end{equation}
+の方とをもつDirac方程式の固有関数\(u(\bm{p})\)を求める。
+この時に、
+\begin{equation}
+  Hu = (\bm{\alpha} \cdot \bm{p} + \beta m)u = Eu
+\end{equation}
+となる。ここで静止した粒子の場合には、
+\begin{equation}
+  Hu = \beta mu = 
+  \begin{pmatrix}
+    mI & 0 \\
+    0 & -mI
+  \end{pmatrix}u
+\end{equation}
+となることから、
+
+エネルギー固有値は\(E= m,m,-m,-m\)であるので、
+\begin{equation}
+  u = 
+  \begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    0
+  \end{pmatrix}, 
+  \begin{pmatrix}
+    0 \\
+    1 \\
+    0 \\
+    0
+  \end{pmatrix},
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    1 \\
+    0
+  \end{pmatrix},
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+\end{equation}
+
+となる。
+
+\(p \neq 0\) の場合は、簡単のために、粒子が z 方向に運動している場合を考えると、Dirac方程式は、
+
+\begin{align*}
+\begin{gathered}
+H u=\left(\begin{array}{cc}
+m & \sigma_3 P_3 \\
+\sigma_3 P_3 & -m
+\end{array}\right)\binom{u_A}{u_B}=E\binom{u_A}{u_B} \\
+\sigma_3 P_3 u_B=(E-m) u_A, \\
+\sigma_3 P_3 u_A=(E+m) u_B
+\end{gathered}
+\end{align*}
+
+
+となり、 \(E>0\) の二つの解は、
+
+\begin{align*}
+u^1=N\left(\begin{array}{c}
+1 \\
+0 \\
+\frac{P_3}{E+m} \\
+0
+\end{array}\right), \quad u^2=N\left(\begin{array}{c}
+0 \\
+1 \\
+0 \\
+\frac{-P_3}{E+m}
+\end{array}\right)
+\end{align*}
+
+\(E<0\) の二つの解は、
+
+\begin{align*}
+u^3=N\left(\begin{array}{c}
+\frac{-P_3}{|E|+m} \\
+0 \\
+1 \\
+0
+\end{array}\right), \quad u^4=N\left(\begin{array}{c}
+0 \\
+\frac{P_3}{|E|+m} \\
+0 \\
+1
+\end{array}\right)
+\end{align*}
+
+
+と求まる。
+4 つの解が直交していることは明らかである。
+
+
+さて、っここから、
+反粒子について出てきて、負の確率密度を回避することが出来たが負のエネルギー解を出すことが出来る。
+二つの負のエネルギー解\(u^{(3,4)}\)は韓流に対応している。
+
+ここで、\(E<0\)の場合には、
+\begin{equation}
+  \psi = e^{-i(-E)(-t)}
+\end{equation}
+と書くことが出来るので負のエネルギー解は時間を逆行する反粒子に考える。
+
+
+Dirac方程式は正負のエネルギー解のそれぞれに打ちて二つの解を持っている。
+これは粒子のスピン状態に対応する。
+
+ヘリシティ演算子はスピンの運動量方向への射影を考えると、
+\begin{equation}
+  \frac{1}{2} \bm{\sigma} \cdot \bm{p} = \frac{1}{2}\sigma_3
+\end{equation}
+となり、
+\begin{equation}
+  \frac{1}{2}\bm{\sigma} \hat{\bm{p}} \chi^{(5)} = \frac{1}{2}\sigma_3 \chi^{(5)} = \pm \chi^{(5)}
+\end{equation}
+となる。ヘリシティ演算子の固有値hは\(\pm \frac{1}{2}\)の状態であり、スピンが右巻き・左巻きになっている。
+
+反粒子の孫愛とヘリシティが自然な帰結として導かれた。
 
 
 
