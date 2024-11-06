@@ -34,6 +34,11 @@ title=#1}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% braket 記法を用いる。
+\usepackage{physics2}
+\usephysicsmodule{braket}
+\newcommand{\mel}[3]{\braket[3]{#1}{#2}{#3}}
+\newcommand{\ev}[1]{\braket[1]{#1}}
 \begin{document}
 \title{量子力学Ⅲ}
 \author{戸部和弘}
@@ -113,7 +118,7 @@ WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることであ�
 \end{equation}
 となる。
 ここでは、\(C_n\)は時間\(t\)に依らない値になっている。
-\ssubection{時間に依存するポテンシャルの場合}
+\subsection{時間に依存するポテンシャルの場合}
 相互作用表示を用いる。
 時間依存性がないハミルトニアンと時間依存性があるハミルトニアンの足し合わせとしよう。
 \begin{equation}
@@ -444,13 +449,13 @@ WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることであ�
 \(t<0\),\(\varphi(t)=0\)として、\(\varphi(t)\)のフーリエ変換
 
 \begin{align}
-  f(E) & = \frac{1}{\sqrt{2\pi}}\int_{-\infty }^{\infty} \varphi(t) e^{iEt/\hbar} \odif{t}\\
-  & = \frac{1}{\sqrt{2\pi}}\int^{\infty}_{0}\odif{t} \exp\left( \frac{i }{\hbar}(E-\var{E}+\frac{i \Gamma_{i}}{2})t \right)\\
-  & = \frac{i \hbar}{\sqrt{2\pi}}\frac{1}{E-\var{E}_i +\frac{i \Gamma_i}{2}}
+  f(E) & = \frac{1}{\sqrt{2\pi}}\int_{-\infty }^{\infty} \varphi(t) e^{iEt \hbar} \odif{t}\\
+  & = \frac{1}{\sqrt{2\pi}}\int^{\infty}_{0}\odif{t} \exp\left( \frac{i }{\hbar}(E-\varDelta{E}+\frac{i \Gamma_{i}}{2})t \right)\\
+  & = \frac{i \hbar}{\sqrt{2\pi}}\frac{1}{E-\varDelta {E}_i +\frac{i \Gamma_i}{2}}
 \end{align}
 となり、
 \begin{equation}
-  |f(E)|^2 = \frac{\hbar^2}{2\pi} \frac{\Gamma_i}{(E-\var{E}_i)^2 + \left( \frac{\Gamma_i}{2} \right)^2}
+  |f(E)|^2 = \frac{\hbar^2}{2\pi} \frac{\Gamma_i}{(E-\varDelta {E}_i)^2 + \left( \frac{\Gamma_i}{2} \right)^2}
 \end{equation}
 となる。
 

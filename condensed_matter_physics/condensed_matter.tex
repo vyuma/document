@@ -13,6 +13,8 @@
 % 式番号を途中でふらない(参照するものだけ参照する)
 \usepackage{mathtools}
 \mathtoolsset{showonlyrefs=true}
+
+
 % 数式をすべてdisplaystyleにする。
 \everymath{\displaystyle}
 \usepackage{bookmark}
@@ -34,6 +36,11 @@ title=#1}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% braket 記法を用いる。
+\usepackage{physics2}
+\usephysicsmodule{braket}
+\newcommand{\mel}[3]{\braket[3]{#1}{#2}{#3}}
+\newcommand{\ev}[1]{\braket[1]{#1}}
 \begin{document}
 \title{物性物理学}
 \author{寺崎一郎}
