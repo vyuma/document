@@ -34,6 +34,11 @@ title=#1}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% braket 記法を用いる。
+\usepackage{physics2}
+\usephysicsmodule{braket}
+\newcommand{\mel}[3]{\braket[3]{#1}{#2}{#3}}
+\newcommand{\ev}[1]{\braket[1]{#1}}
 \begin{document}
 \title{統計力学Ⅲ}
 \author{大成誠一}
@@ -182,7 +187,7 @@ Bのエントロピーを\(S_B\)とすると、
   Z_N = \frac{1}{N!h^{3N}} \int \cdots \int \exp \left( - \frac{E}{k_BT} \right) \odif[order=3N]{k} \odif[order=3N]{q}
 \end{equation}
 となることがわかる。ここで、\(E = \frac{1}{2m}\sum^{N}_{k=1}(k^2_{ix}+k^2_{iy}+k^2_{iz})\)となる。
-\begin{equation}\label{eq:0.3}\label{eq:0.3}
+\begin{equation}\label{eq:0.3}
   Z_N = \frac{V^N}{N!h^{3N}} \left( 2 \pi m k_BT \right)^{\frac{3N}{2}}
 \end{equation}
 となる。
@@ -700,7 +705,7 @@ Bのエントロピーを\(S_B\)とすると、
 \end{equation}
 となる。これをゾ―マンフェルト展開公式という。
 
-\(  \ev{A}_T = \int_{-\inftyは式}^{\infty} D(\varepsilon)A(\varepsilon)f(\varepsilon) \odif[order=3]{\varepsilon}\)となることから、\eqref{eq:2.4:ゾンマーフェルト展開公式}で\(g(\varepsilon)=D(\varepsilon)A(\varepsilon)\)としたものであり、
+\(  \ev{A}_T = \int_{-\infty}^{\infty} D(\varepsilon)A(\varepsilon)f(\varepsilon) \odif[order=3]{\varepsilon}\)となることから、\eqref{eq:2.4:ゾンマーフェルト展開公式}で\(g(\varepsilon)=D(\varepsilon)A(\varepsilon)\)としたものであり、
 \begin{equation}\label{eq:2.5}
   \ev{A}_T = \ev{A}_{T=0} + \frac{\pi^2}{6}(k_BT)^2 G''(\mu)+ \cdots
 \end{equation}
