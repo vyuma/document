@@ -1,0 +1,150 @@
+\documentclass[titlepage]{ltjsarticle}
+% ページスタイル
+\pagestyle{headings}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 数式
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{derivative}
+% 式番号を途中でふらない(参照するものだけ参照する)
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+% 数式をすべてdisplaystyleにする。
+\everymath{\displaystyle}
+\usepackage{bookmark}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% mysimpleboxの設定
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newtcolorbox{mysimplebox}[1]{%
+colframe=black,colback=white,
+coltitle=black,colbacktitle=white,
+boxrule=0.8pt,arc=0mm,
+fonttitle=\sffamily\bfseries,
+enhanced,
+attach boxed title to top left={xshift=10mm ,yshift=-3mm},
+boxed title style={frame hidden},
+title=#1}
+% Pythonでのグラフ描画をインポートするために必要なパッケージ
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+
+\title{ガンマ線実験}
+\author{坊田裕磨}
+\date{\today}
+\maketitle
+
+
+\section{実験概要}
+% 始めに
+\subsection{ガンマ線の概要}
+
+
+ガンマ線とは電磁波の中でも特に\(0.511\ \mathrm{MeV}\)以上のエネルギーの大きいつまり波長が短いような線のことをいう。
+巨大なエネルギー現象が起こった時に発生するために\(\gamma\)線は宇宙を理解するうえで必要である
+
+\subsection{ガンマ線と物質の相互作用}
+
+ガンマ線は物質との相互作用を通して電子を放出する。
+放出する過程は光電効果・コンプトン効果・電子対創成の三つである。
+\subsubsection{光電効果}
+光電効果では光子の全エネルギーが物質の一つに与えられ、その運動エネルギーが測定される反応である。
+光子の運動エネルギーを\(k_0\)として束縛エネルギーを\(E_B\)としよう。この時に、
+\begin{equation}
+  Te = k_0- E_B
+\end{equation}
+のエネルギーが観測されるが吸収されるエネルギーは\(E_B\)が\(k_0\)に対して非常に小さいために、\(k_B\)が観測されることになる。
+
+\subsubsection{コンプトン効果}
+自由電子の光電吸収は不可能であるが、散乱はありうる。
+そこで、散乱された場合を考えると、
+光子と自由電子の散乱という形で記述することができる。
+この時、のエネルギーは、
+\begin{equation}
+  Te(\max) = k_0 - k(\theta_\gamma = 180^\degree)
+\end{equation}
+
+となる。
+
+\subsubsection{電子対創成}
+
+光子のエネルギーが\(2mec^2\)以上の時には、物質中の原子核の近くで光子が消滅して電子と陽電子が生成する過程で電子と陽電子との運動エネルギーをそれぞれ\(T^-_e,T^+_e\)とすると
+\begin{equation}
+  k_0 = T^-_e + T^+_e + 2m_e c^2
+\end{equation}
+がせいりつすると考えることが出来る。
+この時に陽電子が物質中で電子に出会うと\(m_ec^2\)だけのエネルギーを持つ。
+
+
+\section{放射性元素の同定}
+
+\subsection{実験目的}
+
+放射性元素を同定することを目的とずる。
+実験器具である放射線検出装置をすでに分かっているCs放射性元素を用いてガンマ線のスペクトルについての特性を理解する。
+その後ある放射性物質をもってきて同一の放射線検出装置を用いたときにそのガンマ線スペクトルから放射性元素を特定することを行う。
+
+
+\subsection{実験内容}
+\subsubsection{実験のセットアップ}
+
+放射性原子は我々は直接確認することが出来ないために物質との相互作用を通じて電気信号として検出する。そのための装置を放射性検出器という。以下に今回検出する装置の全体像について記述する。
+
+
+% ! ここに全体像のTikzを入れる
+
+\paragraph{シンチレーター}
+荷電粒子が蛍光体を通過するときには荷電粒子はエネルギーを失いながら、経路周辺の原子を励起する。この時に励起した原子はそのエネルギーを光として放出し、その後その物質は元の状態に戻る。この時の光をシンチレーション光といいう。これを発生させる装置をシンチレーターといい、今回の実験では\(\mathrm{NaI}\)シンチレーターを用いる。\(\mathrm{NaI}\)シンチレーターの場合には、この光は\(3 \mathrm{eV}\)だけの光を出すことが出来る。
+
+\paragraph{光電子増倍管}
+光子の数を電気信号として数えるために用いるのが光電子増倍管である。光電子増倍管は光電面と電子像腹部の二つの構成からなっている。
+光電面は半導体の膜でできており、光電効果によって電子に代わる。しかしこの電子は非常に弱いので、電子増幅部で高電圧に加速されながら一つ光電子を\(10^5\sim 10^7\)倍程度にまで増やすことができる。この時に出力パルスの電圧は入射した光子数に比例した高さを持つことができる。
+
+\paragraph{Analog-Digital Converter (ADC)}
+電気パルスの電圧というアナログな値を計算機で処理するためにデジタル値に変換するための装置がADCである。この時のADCは0から8191のデジタル値に変換するものであるが電圧とデジタル値の関係は実験によって確認するためのものである。
+
+\paragraph{Multi-channnel analyzer (MCA)}
+ADCのデジタル信号をコンピュータの画面上にパルス信号の信号と信号の量を示すことが出来る危機である。
+
+
+\subsubsection{測定方法}
+Csについて
+
+
+
+\subsection{測定結果}
+
+
+\subsection{考察}
+
+
+
+
+
+\section{減衰係数の測定}
+
+\subsection{実験目的}
+
+\subsection{実験内容}
+\subsubsection{実験のセットアップ}
+
+\subsubsection{測定方法}
+
+
+
+\subsection{測定結果}
+
+
+\subsection{考察}
+
+
+
+\end{document}

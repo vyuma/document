@@ -375,4 +375,44 @@ Dirac方程式は正負のエネルギー解のそれぞれに打ちて二つの
 
 
 
+\section{量子電磁気学}
+4元運動量\(p^\mu\)の地涌電子は4成分波動関数
+\begin{equation}
+  \psi = u(p) e^{-ipx}
+\end{equation}
+二より書くことが出来て、Dirac方程式で、
+\begin{equation}
+  (\gamma_\mu p^\mu - m)\psi = 0
+\end{equation}
+となる。電磁場\(E,B\)に対してベクトルポテンシャル\(A_\mu=(A_0,\bm{A})\)となることから、
+
+\begin{align}
+  \bm{E} & = - \nabla A_0 - \frac{\partial \bm{A}}{\partial t} \\
+  \bm{B} & = \nabla \times \bm{A}
+\end{align}
+を導入しよう。
+この時電磁場\(A^\mu\)の中の電子に対しては運動量の置き換え\(p^\mu\to p^\mu+eA^\mu\)二より、
+\begin{equation}
+  (\gamma_\mu p^\mu -m )\psi = \gamma^0V \psi  \quad \gamma^0 V = -e \gamma^\mu A_\mu
+\end{equation}
+となる。
+
+摂動ポテンシャル\(V\)による電子の状態\(\psi_i\)から、\(\psi_f\)へ戦士るう遷移振幅は、
+\begin{align}
+  T_{fi} & = -i \int \psi_f(\chi)V(\chi) \psi_i(\chi) \odif[order=4]{\chi}\\
+  & = ie \int \bar{\psi}_f \gamma^\mu A^{\mu} \psi_i \odif[order=4]{\chi}\\
+  & = ie \int j_\mu^f A^\mu \odif[order=4]{\chi}
+\end{align}
+ここで、\(j^{fi}_{\mu}\)はスピンをもつ電子状態\(i\)から、\(f\)への電磁カレント
+\begin{align}
+  f^{f_i}_\mu = -e \bar{\psi}_f \gamma_\mu \psi_i
+\end{align}
+となり、\(e^- e^-\)
+電子同士の散乱では、ベクトルポテンシャル\(A_\mu\)は相手の電子によって作られMaxwell方程式は、
+\begin{equation}
+  \square^2 A^\mu = j^{\mu}_{(2)}
+\end{equation}
+
+
+
 \end{document}

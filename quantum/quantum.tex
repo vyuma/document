@@ -455,5 +455,291 @@ WKB近似は、古典力学に\(\hbar\)の寄与を取り入れることであ�
 となる。
 
 
+\section{古典的輻射場との相互作用への応用}
+\subsection{古典的輻射場との相互作用}
+量子化されていない古典的な放射場から導かれる電場や磁場について量子化された場への量子論
+場の量子論を習うと粒子は場の中に存在することになる。
+\(\hat{x}_i\)について場が\(\hat{\phi}(\hat{x})\)に対応する。
+場は\(\hat{x}_i\)が\(\hat{a} + \hat{a}^\dagger\)に対応する。それに対して、\(\hat{a}+\hat{a}^\dagger\)
+となるのⓓえ、電場や磁場が演算子であらわされて、光子が作ったり消されたり作られたいｒを表すことが出来る。
+
+今からやりたいこととしては、水素軌道と\(n=2\)の状態から\(n=1\)というところに遷移する。
+この時に、\(2p\)軌道から\(1s\)軌道に遷移するときに光が作られる。
+しかしながらその取り扱いには場の量子論が必要である。
+
+量子論を考えない古典論で考える。
+場の量子論の知識を借りてここで考えてみよう。
+
+理論をもう一度思い出してみよう。
+
+
+\paragraph{電磁場中の荷電粒子}
+電磁場中の荷電粒子では、
+\begin{equation}
+  H = \frac{1}{2m} \left( \vec{p} - q \vec{A} \right)^2 + q\phi(\bm{x},t)
+\end{equation}
+となる。
+演習問ⓓ内にハミルトンの運動方程式は二回微分した
+\begin{equation}
+  m \ddot{\vec{x}} = q \left[ \vec{v} \times \vec{B} + \vec{E} \right]
+\end{equation}
+となる。素粒子物理学は一つのラグランジアンがあればその運動方程式を作り出すことが出来るはずである。
+素粒子物理学では一つのラグランジアンを求めることが出来るはずである。
+
+量子力学では\(\vec{A},\vec{\phi}\)のようなものである。
+古典論のレベルではあるが、運動量が演算子になる。
+
+\begin{equation}
+  \vec{P} \to \vec{P} = \frac{\hbar}{i} \vec{\nabla} ,\quad \hat{H}^\dagger = \hat{H}
+\end{equation}
+であることを要請する。
+
+この時に、\(\vec{P}\)演算子になるために、交換により理論が変わってしまう。
+そこで、普通は、
+\begin{align}
+  \hat{H}  & = \frac{1}{2m} \left( \hat{\vec{P}} - q \hat{\vec{A}}  \right)\left( \hat{\vec{P}} - q \hat{\vec{A}}  \right) + q \phi(\vec{x},t)\\
+  & = \frac{1}{2m} \left( \hat{\vec{P}}^2 - q\left( \vec{A}\hat{\vec{P}} + \hat{\vec{P}}\vec{A} \right) + q^2 \vec{A}^2 \right) + q \vec{A}^2
+\end{align}
+となることにより、ゲージ変換になることがわかる。
+
+\paragraph{ゲージ変換}
+強い相互作用とか、ゲージ場であらわすことが出来る。
+
+力を表すような理論を記述しようとすると、ゲージ不変性とかと対応するようになっていく。
+スカラーポテンシャルとベクトルポテンシャルのゲージ変換と\(\psi\)に対する位相変換を考えると。
+\begin{align}
+  \phi \to  \phi' = \phi + \pdv{\Lambda}{t}\\
+  \vec{A} \to \vec{A}' = \vec{A} - \vec{\nabla} \Lambda\\
+  \psi \to \psi' = \psi e^{\frac{i q \Lambda}{\hbar}}
+\end{align}
+このように変形したとしても、シュレディンガー方程式は、
+\begin{equation}
+  i \hbar \pdv{\psi'}{t} = \hat{H} \psi'
+\end{equation}
+のように運動方程式の形は変わらないということがわかる。これを共変性と呼んだりする。
+
+電場や磁場は直接的に観測することが出来る量である。
+量子論で扱う時には、\(A\)とか\(B\)とかの方がよく扱われる。
+理論にこのようなゲージ変換をしてもいいので便利なものを考える方が簡単になる。
+便利なゲージを固定して考えるとよい。
+この中でよく考えられるのがクーロンゲージ固定である。
+
+クーロンゲージ固定として、ゲージ変換について考えてあげると、
+\begin{equation}
+  \vec{A}^c = \vec{A} ^ \nabla \Lambda
+\end{equation}
+としたときに、
+\begin{equation}
+  \vec{\nabla} \cdot \vec{A}^c = \vec{\nabla} \cdot \vec{A} - \vec{\nabla}^2 \Lambda 
+\end{equation}
+となり、この時、\(\vec{\nabla}^2 \Lambda  = \vec{\nabla} \cdot \vec{A}\)となる。
+これをクーロンゲージのゲージ固定条件である
+\begin{equation}
+  \vec{\nabla} \cdot \vec{A}_c = 0
+\end{equation}
+となる。これをクーロンゲージ固定という。
+
+\begin{equation}
+  A^\mu = \left(  \frac{\phi}{c}, \vec{A} \right)
+\end{equation}
+となるような、ローレンツ変換として、共役な場合には、
+\begin{equation}
+  x^\mu = \left( ct, \vec{x} \right)
+\end{equation}
+となる。\(\partial^\mu A_\mu=0\)が相対論でのゲージ固定である。
+
+\(\hat{H}\)は\(\psi\)にかかるような演算子であるために、
+右側にあるようなものにすべてかかるので
+\begin{align}
+  \vec{P} \vec{A} \psi & = \frac{\hbar}{i} \nabla (\vec{A} \psi) = \frac{\hbar}{i}(\nabla \vec{A}) \psi + \frac{\hbar}{i} \vec{A} \nabla \psi \\
+  & = \frac{\hbar}{i} \vec{A} \nabla \psi \\
+  & = \vec{A} \hat{\vec{P}} \psi
+\end{align}
+となるので2倍が出てくる。
+
+これにより、
+\begin{align}
+  \hat{H} & = \frac{1}{2m} {\hat{\vec{P}}}^2 + q \phi - \frac{q}{m}\vec{A}\vec{P} + \frac{q^2}{2m}\vec{A}^2
+\end{align}
+となる。\(q=-e\)となる。これが水素原子中の電子の時のハミルトニアンは、
+\begin{equation}
+  \hat{H} = \frac{1}{2m} \hat{\vec{P}}^2 - \frac{e}{m} \vec{A} \hat{\vec{P}} + \frac{e^2}{2m} \vec{A}^2 - e \phi
+\end{equation}
+となり、ここから\(e\)が無次元で\(\alpha\)となるが、電磁気の相互作用を表す特徴的な量であるが摂動論を考えると、
+摂動論的には、\(\vec{A}\)が存在している。そして、\(\vec{A}^2\)は高次の項であるために無視する。
+
+\begin{align}
+  \hat{H} & = \hat{H}_0 + \frac{e}{m}\vec{A}\hat{\vec{P}}+ O(e^2)\\
+  \hat{H} & = \frac{\hat{\vec{P}}^2}{2m} - \frac{e^2}{4\pi \varepsilon_0 r}\\
+  \hat{V} & = \frac{e}{m}\vec{A}\hat{\vec{P}}
+\end{align}
+となる。
+\footnote{
+  クーロンゲージでのマクスウェル方程式は、
+  \begin{align}
+    \nabla \cdot \vec{E} & = 4\pi \rho \quad \nabla \times \vec{E} = -\pdv{\vec{B}}{t}\\
+    \nabla \cdot \vec{B} & = 0 \quad \nabla \times \vec{B} -\frac{1}{c^2} \pdv{\vec{E}}{t} = \mu \vec{J}
+  \end{align}
+  となり、クーロンゲージから\(\vec{\nabla}\vec{A} = 0\)となり、真空の時には、
+  \begin{equation}
+    \left( \frac{1}{c^2} \pdv[order=2]{}{t} - \vec{\nabla}^2 \right)\vec{A}(\bm{x},t) = 0
+  \end{equation}
+  \(A,\phi\)は造語作用しない系である。摂動というのは何も相互作用の無い解を問いて、そのあとに、必要な項を出していくことである。
+}
+
+\begin{equation}
+  \vec{A}(\bm{x},t) = \sum_{\vec{k}}\sum_\lambda \sqrt{\frac{N \lambda(\vec{k})\hbar}{2 \varepsilon_0 V \omega}} \vec{\varepsilon}_\lambda(\vec{k}) \exp\left( i \left( \vec{k} \cdot \vec{x} - \omega t  \right) \right) + \text{複素共役}
+\end{equation}
+ここで、\(\omega= |\vec{k}|^2\)
+となる。
+
+有限体積で一片が\(L\)の立方体が入っている。
+\begin{equation}
+  - \frac{L}{2} \le x \le \frac{L}{2} , V = L^3 
+\end{equation}
+ベクトルポテンシャルに対して周期的境界条件を例えば、次のように設定する。
+\begin{equation}
+  \vec{A}(x+\frac{L}{2},y,z,t) = \vec{A}(x-\frac{L}{2},y,z,t)
+\end{equation}
+周期的境界条件により\(k\)が決定する。
+
+偏極ベクトルは、クーロンゲージの条件からナブラで微分したときに、\(\vec{k}\cdot\varepsilon_{\lambda}(\vec{k})=0\)であるようなものをえらぶ。
+さらに\(\lambda=1,2\)の時に
+\begin{equation}
+  \vec{\varepsilon}_1(\vec{k}) \cdot \vec{\varepsilon}_2(\vec{k}) = 0
+\end{equation}
+のように、規格化されて、\(\vec{\varepsilon}_{\lambda}\vec{\varepsilon}_{\lambda'}=\delta_{\lambda\lambda'}\)となる。
+
+\(\vec{A}\)の規格化は、電磁場のエネルギー密度である
+\begin{equation}
+  \varepsilon = \frac{\varepsilon_0}{2}\vec{E}^2 + \frac{1}{2 \mu_0} \vec{B}^2
+\end{equation}
+となる、
+\begin{equation}
+  \int \odif[order=3]{x} \varepsilon = \sum_{\vec{k}} \sum_{\lambda} N_{\lambda}(\vec{k}) \hbar \omega
+\end{equation}
+となる。
+ここで、\(N_{\lambda}(\vec{k})\)は\(\lambda,\vec{k}\)を固定した光の数である。これは観測することが出来る。
+
+一個の光子のエネルギーは\(\hbar \omega\)となる。
+調和振動子のエネルギーは
+\begin{equation}
+  E_{n} = \hbar \omega \left(  n + \frac{1}{2} \right)
+\end{equation}
+となる。
+
+摂動項が\(V(t) = \frac{e}{m} \vec{A}(\bm{x},t) \hat{\vec{P}}\)に対して、
+\begin{equation}
+  \vec{A}(\bm{x},t) = \hat{F}e^{i \omega t} + \hat{F}^\dagger e^{-i \omega t}
+\end{equation}
+となる、調査振動とまったく同じ形をしている。そこで調和振動での計算を用いてあげる。
+
+光子の放出について考えて見る。
+この時に、\(E_i,E_f\)に対して、より下のエネルギー状態に落ちるということである。長い時間で見るとエネルギー保存の状態に落ちる。
+それをおこないたい！！波動関数の言葉で書くと、
+\begin{equation}
+  \hat{V}_{fi} = \int \odif[order=3]{x} \psi^*_f V \phi_i 
+\end{equation}
+となる。
+
+\begin{equation}
+  E_i \to E_f + \hbar \omega
+\end{equation}
+となる、光子の数は\(E_i\)の時に\(N=0\)で\(E_f\)のときに\(N=1\)となる。
+
+\(N_{\lambda}(\vec{E})\)は吸収の場合には過程前の格子の数であり、放出の場合には過程後の格子の数となる。
+このようなルールは場の量子論から導かれるものである。
+
+光子ができるのだが光子がなくても光子が放出してでることが出来る。水素原子の分子は完全に安定ではなくて電子がうろうろしている。何もないのだがいつでもこのような時間に依存する摂動の力を感じて
+
+
+
+\paragraph{第5回}
+量子力学的に電磁気学をとりいれたかったらベクトルポテンシャル付きでハミルトニアンを書いてあげて、水素原子のハミルトニアンとベクトルポテンシャルがあり、そこに対して摂動論を考えてあげよう。
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \frac{e}{m} \vec{A} \cdot \vec{P} + O(\vec{e})
+\end{equation}
+となる。
+ここから、
+\begin{align}
+  \hat{H}_0 & = \frac{\vec{p}^2}{2m} - \frac{e^2}{4\pi \varepsilon_0 r} \\
+  \hat{V}(t) & = \frac{e}{m} \vec{A}\cdot \vec{P}\\
+  \vec{A} &= \sum_{\vec{k}}\sum_{\lambda}\sqrt{\frac{N_{\lambda}(\vec{k})\hbar}{2 \varepsilon_0 V \omega}}\vec{\varepsilon}_\lambda(\vec{k})\exp\left( -i \left( \vec{k}\cdot \vec{x}- \omega t \right) \right)
+\end{align}
+となるので、
+調和振動として、放出と吸収の二つの意味を考えて、
+\begin{equation}
+  \hat{V}  = \hat{F}e^{i\omega t} + \hat{F}^\dagger e^{-i\omega t}
+\end{equation}
+となる。ただしこの\(F\)は、
+\begin{equation}
+  \hat{F} = \sum_{\vec{k}}\sum_{\lambda}\sqrt{\frac{N_{\lambda}(\vec{k})\hbar}{2 \varepsilon_0 V \omega}}\vec{\varepsilon}_\lambda(\vec{k})\exp\left( - i \vec{k}\cdot \vec{x} \right) \hat{\vec{p}}
+\end{equation}
+となる。
+
+この時の遷移確率がわかると、
+\begin{equation}
+  F_{f_i} = \mel{f}{\hat{F}}{i} = \int \odif[order=3]{x } \psi^*_{f} \hat{F} \psi_i
+\end{equation}
+となるので、単位時間当たりの遷移確率としては、
+\begin{equation}
+  \omega^{i\to f}(\vec{k},\lambda) = \frac{2\pi}{\hbar} |F_{fi}|^2 \delta(E_f - E_i + \hbar \omega)
+\end{equation}
+となる。つまり、\(E_i\)の状態から\(E_f\)の状態へ遷移することである。
+
+\(\hat{F}\)は\(\alpha\)により和をとろうとすると、
+\begin{equation}
+  \hat{F} = \frac{e }{m} \sqrt{\frac{N_\lambda(\vec{k})\hbar}{2\varepsilon_0 V \omega}}\sum_\alpha \vec{\varepsilon}_\lambda(\vec{k})e^{-i \vec{k}\vec{x}}\hat{\vec{p}}_\alpha
+\end{equation}
+のようになる。
+
+ではここで、行列要素\(F_{ij}\)の計算について行おう。レポート問題でもある。
+\begin{equation}
+  \varepsilon^*_\lambda(\vec{k}) \mel{f}{e^{i \vec{k}\vec{x}}}{i}
+\end{equation}
+に土江電子双極子近似をしようとしている。この時に、簡単にするために、\(\vec{k}\cdot \vec{x}\ll 1\)と仮定する。
+\begin{equation}
+  e^{-i \vec{k}\cdot \vec{x}} = 1 - i \vec{k}\cdot \vec{x} - \frac{1}{2}(\vec{k}\cdot \vec{x})^2 + \cdots
+\end{equation}
+の第一項である\(1\)のみを残してもいい。さらに、
+\begin{equation}
+  \left[ \hat{H}_0, \hat{x}_\alpha \right]  = \left[ \frac{1}{2m} \hat{\vec{p}}^2 , x_\alpha  \right] = \frac{1}{2m}\sum_\beta \left[ \hat{p}_\beta \hat{p}_\beta, x_\alpha \right] 
+\end{equation}
+となり、\(\beta\)に対して和をとると、
+
+\begin{align}
+  [\hat{A}\hat{B},\hat{C}] & = \hat{A} \left[ \hat{B} , \hat{C} \right] + \left[ \hat{A} , \hat{B} \right] \hat{C} \\
+  \sum_\beta [\hat{p}_\beta \hat{p}_\beta , \hat{p}_\alpha] & = \hat{p}_\beta [\hat{p}_\beta , \hat{p}_\alpha] + [\hat{p}_\beta , \hat{p}_\alpha] \hat{p}_\beta \\
+  & = \hat{p}_\alpha i \hbar \delta_{\beta \alpha} + i \hbar \delta_{\beta \alpha} \hat{p}_\alpha \\
+  & = 2i \hbar \hat{p}_\alpha
+\end{align}
+となる。
+ゆえに、
+\begin{equation}
+  \left[ \hat{H}_0,\hat{x}_\alpha \right] = - \frac{i \hbar}{m} \hat{p}_\alpha
+\end{equation}
+となり、これを逆に解くと
+\begin{equation}
+  \hat{p}_\alpha = -\frac{i m}{\hbar} \left[ \hat{H}_0 , \hat{x}_\alpha \right]
+\end{equation}
+となるので、結果を計算しようとすると、
+\begin{align}
+  \mel{f}{e^{i \vec{k}\vec{x}}\hat{\vec{p}}}{i} = \mel{f}{ \frac{i m}{\hbar} \left[ \hat{H}_0,\hat{x}_\alpha \right]}{i} \\
+  = -\frac{im}{\hbar}(E_i-E_f) \mel{f}{\hat{x}_\alpha}{i}
+\end{align}
+となり、ここで、単位時間の遷移確率について考えると、\(E_i-E_f = \hbar \omega\)となるので、
+\begin{equation}
+  e^{i \vec{k}\vec{x}}\hat{\vec{p}} = -im\omega \mel{f}{\hat{x}_\alpha}{i}
+\end{equation}
+となる。
+
+\paragraph{なぜ双極子近似？}
+\begin{align}
+  \hat{V}& = \frac{e}{m} \vec{A} \cdot \vec{P} = \frac{e}{m} A^\alpha (-im\omega) \hat{x}_\alpha \\
+  & = e(-i\omega \vec{A})\cdot \vec{x}\\
+  & = -(-e \vec{x}) \vec{E} \\
+  & = - \vec{d} \cdot \vec{E}
+\end{align}
+となり、ここで、
 
 \end{document}
