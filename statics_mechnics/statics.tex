@@ -778,6 +778,184 @@ Bのエントロピーを\(S_B\)とすると、
 
 
 
+% ここにgoodnoteの内容を入れる
+
+
+
+
+
+磁場を入れたときの粒子のエネルギーは、
+\begin{equation}
+  \varepsilon_{\vec{k}\sigma} = \varepsilon_{\vec{k}} + \sigma \mu_B H
+\end{equation}
+となる。
+
+\begin{figure}[h]
+\centering
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,235); %set diagram left start at 0, and has height of 235
+
+%Shape: Axis 2D [id:dp019695550918759075] 
+\draw  (213,182.65) -- (436,182.65)(324,63) -- (324,229.17) (429,177.65) -- (436,182.65) -- (429,187.65) (319,70) -- (324,63) -- (329,70)  ;
+%Straight Lines [id:da03717739112964291] 
+\draw    (203,100) -- (441,100) ;
+%Straight Lines [id:da6146232228002211] 
+\draw    (252,60.17) -- (252,34.17) ;
+\draw [shift={(252,32.17)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da7839153232997202] 
+\draw    (388,30) -- (388,57.17) ;
+\draw [shift={(388,59.17)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da8448149574349508] 
+\draw    (193,45.17) .. controls (204,99.17) and (235,144.17) .. (324,146) ;
+%Curve Lines [id:da29542722436391444] 
+\draw    (325,211) .. controls (406,200.17) and (411,125.17) .. (416,58.17) ;
+
+% Text Node
+\draw (329,131.4) node [anchor=north west][inner sep=0.75pt]    {$\mu _{B} H$};
+% Text Node
+\draw (271,191.4) node [anchor=north west][inner sep=0.75pt]    {$-\mu _{B} H$};
+% Text Node
+\draw (314,38.4) node [anchor=north west][inner sep=0.75pt]    {$\varepsilon _{\vec{k} \sigma }$};
+% Text Node
+\draw (445,176.4) node [anchor=north west][inner sep=0.75pt]    {$D( \varepsilon )$};
+
+
+\end{tikzpicture}
+
+\caption{スピンの図}
+\label{fig:スピンの図}
+\end{figure}
+
+\(\sigma\)スピンの電子数は、
+\begin{align}
+  N_{\sigma}& = \sum_{\vec{k}} f(\varepsilon_{\vec{k}\sigma}) \\
+  & = \int_{0}^{\infty}\frac{1}{2}D(\varepsilon)f(\varepsilon + \sigma \mu_B H) \odif{\varepsilon}
+\end{align}
+となる。
+ここから、状態密度を\(\mu\)の周りで展開してあげると\(D\)は偶数次しか出ててこないことを用いる。
+\begin{align}
+  N_{\sigma} & = \frac{N}{2} + \int_{0}^{\infty}\frac{1}{2}D(\varepsilon) \pdv{f(\varepsilon)}{\varepsilon}\Big|_{H=0} \sigma \mu_B H \odif{\varepsilon} + O(H^2)\\
+  & = \frac{N}{2}  -  \frac{1}{2}\sigma \mu_B H \int_{0}^{\infty}\left[ D(\mu) + \frac{1}{2}D''(\mu)(\varepsilon-\mu)^2 \right]\left( \pdv{f(\varepsilon)}{\varepsilon} \right)_{H=0} \odif{\varepsilon} + O(H^2)\\
+\end{align}
+となる。ここで、ゾンマーフェルト展開と同様に、
+\begin{equation}\label{eq:2.12}
+  N_\sigma = \frac{N}{2} - \frac{1}{2}\sigma \mu_B H \left[ D(\mu) + \frac{1}{2}D''(\mu)\frac{\pi^2}{3}(k_BT)^2 \right] + O(H^2)
+\end{equation}
+となる。
+よって磁化は、
+\begin{align}\label{eq:2.13}
+  M & = N_{\uparrow}\mu_{e \uparrow} - N_{\downarrow}\mu_{e \downarrow} \\
+  & = -\mu_B \left( N_{\uparrow} - N_{\downarrow}\right) \\
+  & = \mu_B^2 H \left[ D(\mu) + \frac{1}{2}D''(\mu) \frac{\pi^2}{3}(k_B T)^2 \right]
+\end{align}
+となるので、\(\vec{\mu}_e = - \mu_B \vec{\sigma}\)
+ここで、式\eqref{eq:2.12}より、\(N_{\uparrow}+N_{\downarrow}=N+O(H^2)\)となる依って、
+\begin{equation}
+  \mu(H) = \mu(H=0) + O(H^2)
+\end{equation}
+帯磁率\(\chi = \pdv{M}{H}\Big|_{H=0}\) を求める際に\(\mu\)の\(H\)依存性を考慮する必要がない。
+線形部分しか効かない。
+
+\(T=0\)の場合の退治率は
+\begin{equation}
+  \chi = \pdv{M}{H} \Big|_{H=0} = \mu_B^2 D(\mu_0) >0
+\end{equation}
+となる。磁場をかけた方向に磁化することがわかる。
+反対に磁化を書けて反対に磁化するものを反磁性と言ったりもするが、今回は常磁性体である。
+
+次に有限温度の場合を考えてみよう。この場合には、\(\mu(T) = \mu_0 + \varDelta \mu\)を式\eqref{eq:2.13}に代入して、
+\begin{equation}
+  M = \mu_B^2 H \left[ D(\mu_0) +D'(\mu_0) \varDelta \mu + \frac{\pi^2}{6}(k_BT)^2 D''(\mu_0) \right] + O(T^4)
+\end{equation}
+となる。ここで、\eqref{eq:2.7}より、
+\begin{equation}
+  \varDelta \mu = - \frac{D'(\mu_0)}{D(\mu_0)}\frac{\pi^2}{6}(k_BT)^2 
+\end{equation}
+を代入して、
+
+\begin{equation}
+  M = \mu_B^2 H D(\mu_0) + \mu_B^2 H \frac{\pi^2}{6}(k_BT)^2 \left[ - \frac{D'(\mu)^2}{D(\mu)} + D''(\mu_0) \right]
+\end{equation}
+となる。より、\(\chi(T)=\chi(T=0) + \mu_B^2 \frac{\pi^2}{6}(k_BT)^2 \left[ - \frac{(D'(\mu_0))^2}{D(\mu_0)} + D''(\mu_0) \right] \)
+
+
+
+3次元の場合には、\(D(\varepsilon)=c \varepsilon^{\frac{1}{2}}\)により、
+\begin{equation}
+  \chi(T) = \mu_B^2 D(\mu_0) \left[ 1 - \frac{\pi^2}{12}\left( \frac{k_BT }{\mu_0} \right)^2 \right]
+\end{equation}
+となる。
+1次元の場合には、\(D(\varepsilon)=c \varepsilon^{-\frac{1}{2}}\)
+となり、
+\begin{equation}
+  \chi = \mu_B^2 D(\mu_0) \left[ 1 + \frac{\pi^2}{12}\left( \frac{k_BT}{\mu_0} \right)^2 \right]
+\end{equation}
+
+\(T \gg T_F\)の場合、\(e^{\beta \mu}\ll 1\)より、\(\sigma\)スピンの分布関数
+\begin{equation}
+  f(\varepsilon+\sigma \mu_B H) = \exp\left( - \frac{\varepsilon-\mu + \sigma \mu_B H}{k_BT} \right)
+\end{equation}
+となる。
+このようになるととても計算が簡単になり、\(\int_{0}^{\infty}D(\varepsilon)f(\varepsilon)\odif{\varepsilon}=N\)とすると、
+\begin{align}
+  N \sigma & = \int_{0}^{\infty} \frac{1}{2}D(\varepsilon) f(\varepsilon + \sigma \mu_B H) \odif{\varepsilon}\\
+  & = \frac{1}{2}\int_{0}^{\infty}D(\varepsilon) f(\varepsilon) \left( 1 - \frac{\sigma \mu_B H}{k_BT} \right)\odif{\varepsilon} + O(H^2)\\
+  & = \frac{N}{2}\left( 1 - \frac{\sigma \mu_B H}{k_BT} \right) + O(H^2)
+\end{align}
+となり、
+\begin{equation}
+  M = - \mu_B(N_{\uparrow} - N_{\downarrow}) =  \mu_B^2 H \frac{N}{k_BT} + O(H^2)
+\end{equation}
+となるために、
+\begin{equation}
+  \chi = \pdv{M}{H}\Big|_{H=0} =\frac{N\mu_B^2}{k_BT}
+\end{equation}
+となる。これを磁場が磁化にそろおうとする効果これをキュリー則という。
+
+退治率の温度依存性をまとめると、
+低温領域では、
+\begin{equation}
+  \begin{cases}
+    \chi(T) = \mu_B^2 D(\mu_0) \left[ 1 - \frac{\pi^2}{12}\left( \frac{k_BT}{\mu_0} \right)^2 \right] & \text{3次元} \\
+    \chi(T) = \mu_B^2 D(\mu_0) \left[ 1 + \frac{\pi^2}{12}\left( \frac{k_BT}{\mu_0} \right)^2 \right] & \text{1次元}
+  \end{cases}
+\end{equation}
+となり、高温領域では、
+\begin{equation}
+  \chi(T) = \frac{N\mu_B^2}{k_BT}
+\end{equation}
+となる。
+
+\paragraph{問題}これをグラフ\(\chi-T\)グラフを書け。
+
+
+\paragraph{Wilson比}
+Wilson比は、
+\begin{equation}
+  \frac{\chi(0)}{\gamma} = \frac{\mu_B^2 D(\mu_0)}{\frac{\pi^2}{3}k_B^2 D(\mu_0)} = \frac{3\mu_B^2}{\pi^2 k_B^2}
+\end{equation}
+となる。このような普遍的な定数になってしまう。
+
+\paragraph{パウリ帯磁率の直観的導出}
+パウリ帯磁率を直観的に導出しよう。
+
+この時に斜線部分の面積は\(2\mu_BH\)
+\begin{equation}
+  M = - \mu_B (N_{\uparrow} - N_{\downarrow}) = \mu_B \frac{1}{2}D(\mu_0) \cdot 2 \mu_B H
+\end{equation}
+この時に、\(\frac{1}{2}D(\mu_0) \)はスピン当たりのDOSとなる。より、
+\begin{equation}
+  \chi = \mu_B^2 D(\mu_0)
+\end{equation}
+となる。これがパウリ帯磁率である。
+
+
+
+
 
 
 

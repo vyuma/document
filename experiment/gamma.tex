@@ -100,6 +100,56 @@ title=#1}
 
 
 % ! ここに全体像のTikzを入れる
+\begin{figure}[h]
+\centering
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp04179116109595471] 
+\draw   (103,96) -- (328,96) -- (328,175.5) -- (103,175.5) -- cycle ;
+%Shape: Rectangle [id:dp37397426072555895] 
+\draw   (103,96) -- (150,96) -- (150,174.5) -- (103,174.5) -- cycle ;
+%Shape: Rectangle [id:dp8773198811537455] 
+\draw   (150,96) -- (249,96) -- (249,175.5) -- (150,175.5) -- cycle ;
+%Shape: Rectangle [id:dp19339927261376832] 
+\draw   (349,97) -- (452,97) -- (452,176.5) -- (349,176.5) -- cycle ;
+%Shape: Rectangle [id:dp10832700049693211] 
+\draw   (476,97) -- (528,97) -- (528,177.5) -- (476,177.5) -- cycle ;
+%Shape: Rectangle [id:dp5907949267298009] 
+\draw   (547,96) -- (617,96) -- (617,176.5) -- (547,176.5) -- cycle ;
+%Straight Lines [id:da5846698147358367] 
+\draw    (329,137) -- (349,137) ;
+\draw [shift={(351,137)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da18240647701076318] 
+\draw    (452,138) -- (472,138) ;
+\draw [shift={(474,138)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da9636215222427988] 
+\draw    (526,136) -- (546,136) ;
+\draw [shift={(548,136)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (114,130) node [anchor=north west][inner sep=0.75pt]   [align=left] {NaI};
+% Text Node
+\draw (154,130) node [anchor=north west][inner sep=0.75pt]   [align=left] {光電子増倍管};
+% Text Node
+\draw (250,130) node [anchor=north west][inner sep=0.75pt]   [align=left] {プリアンプ};
+% Text Node
+\draw (354,129) node [anchor=north west][inner sep=0.75pt]   [align=left] {リニアアンプ};
+% Text Node
+\draw (482,130) node [anchor=north west][inner sep=0.75pt]   [align=left] {ADC};
+% Text Node
+\draw (558,132) node [anchor=north west][inner sep=0.75pt]   [align=left] {MCA};
+
+
+\end{tikzpicture}
+\caption{ガンマ線測定器の全体}
+\label{fig:ガンマ線測定器の全体}
+\end{figure}
+
 
 \paragraph{シンチレーター}
 荷電粒子が蛍光体を通過するときには荷電粒子はエネルギーを失いながら、経路周辺の原子を励起する。この時に励起した原子はそのエネルギーを光として放出し、その後その物質は元の状態に戻る。この時の光をシンチレーション光といいう。これを発生させる装置をシンチレーターといい、今回の実験では\(\mathrm{NaI}\)シンチレーターを用いる。\(\mathrm{NaI}\)シンチレーターの場合には、この光は\(3 \mathrm{eV}\)だけの光を出すことが出来る。

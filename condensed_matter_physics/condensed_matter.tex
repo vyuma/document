@@ -405,10 +405,200 @@ title=#1}
 
 
 
+\section{第6回}
+\subsection{これまでのまとめ}
+\paragraph{ブロッホ関数}
+周期\(a\)のポテンシャルの電子の厳密解であり、
+\begin{equation}
+  \varphi_{nk}(x)
+\end{equation}
+と書くときに、\(n\)はバンド指標であり、\(k\)は第一BZで定義される波数のことである。
+この時に、
+\begin{equation}
+  \varphi_{nk}(x+a) = e^{ika}\varphi_{nk}(x)
+\end{equation}
+となり、電子密度は\(a\)の周期になる。
+つまり、
+\begin{equation}
+  \rho(x+a) = |\varphi_{nk}(x+a) | ^2 = |\varphi_{nk}(x)|^2 = \rho(x)
+\end{equation}
+となる、すると、
+\begin{align}
+  \varphi_{nk}(x) = e^{ikx} u_{nk}(x) \\
+  \varphi_{nk}(\bm{r}) = e^{i \bm{k}\cdot \bm{r}} u_{nk}(\bm{r})\\
+  \varphi_{nk}(\bm{r}+\bm{R}) = \varphi_{nk}(\bm{r})
+\end{align}
+となる。
 
+\paragraph{PBC}
+PBCでは、
+\begin{equation}
+  \varphi_{nk}(\bm{r}+Na) = e^{ikNa}\varphi_{nk}(\bm{r})
+\end{equation}
+に対して、
+\begin{equation}
+  kNa = 2\pi n
+\end{equation}
+となることから、\(k=\frac{2\pi}{Na}n\)
+となる。つまり、
+\begin{equation}
+  -\frac{\pi}{a} \le k \le \frac{\pi}{a}
+\end{equation}
+となる。
+\paragraph{エネルギーバンド}
+エネルギーバンドは、\(k\)に対して、
+\begin{equation}
+  \hat{H}\varphi_{nk+K_m}= \varepsilon_{nk+K_m}\varphi_{nk+K_m}
+\end{equation}
+となることから、
+\begin{equation}
+  \left\{ - \frac{\hbar^2}{2m} \left( \frac{\hbar}{i}\nabla \right)^2 + V \right\}\varphi_{nk} = \varepsilon_{nk}\varphi_{nk}
+\end{equation}
+となるところに、\(\varphi_{nk}=e^{i \bm{k}\cdot \bm{r}}\)を代入すると、
+\begin{equation}
+  \left(\frac{1}{2m}(\hbar \bm{k} - i \hbar \nabla)^2 + V\right)u_{nk} = \varepsilon u_{nk} 
+\end{equation}
+となる。
 
+\paragraph{ハイゼンベルクの運動方程式}
+運動方程式は、
+\begin{equation}
+  i \hbar \pdv{}{t} \ket{\psi(t)} = \hat{H}\ket{\psi(t)}
+\end{equation}
+を形式的に、
+\begin{equation}
+  \ket{\psi(t)} = e^{-\frac{i}{\hbar}\hat{H}t}\ket{\psi(0)}
+\end{equation}
+と書いてあげると、これは時間発展であるので、任意の物理量\(\hat{A}\)とは、
+\begin{align}
+  \hat{A} & = \mel{\psi(t)}{\hat{A}}{\psi(t)} \\
+  & = \mel{\psi(0)}{e^{\frac{i}{\hbar}\hat{H}t}\hat{A}e^{-\frac{i}{\hbar}\hat{H}t}}{\psi(0)} \\
+\end{align}
+となる。
+ここで物理量の微分について考えると、
+\begin{align}
+  \odv{\hat{A}}{t} & = \odv{}{t} \left( e^{i \frac{\hat{H}t}{\hbar}} \hat{A} e^{-\frac{i \hat{H}t}{\hbar}} \right)\\
+  & = \frac{i \hat{H}}{\hbar} e^{i \frac{\hat{H}t}{\hbar}} \hat{A} e^{-\frac{i \hat{H}t}{\hbar}} + e^{i \frac{\hat{H}t}{\hbar}} \hat{A} \frac{i \hat{H}}{\hbar} e^{-\frac{i \hat{H}t}{\hbar}}\\
+  & = e^{i \frac{\hat{H}t}{\hbar}}\left( \frac{i}{\hbar}\hat{H}\hat{A} - \frac{i}{\hbar} \hat{A} \hat{H} \right)e^{-i \frac{\hat{H}t}{\hbar}}\\
+  & = \frac{i }{\hbar}\left[ \hat{H}, \hat{A} \right]
+\end{align}
+となる。
 
+\subsection{電子の速度}
+電子の速度は速度の微分の平均値で書けるはずである。そして、具体的に考えると、バンド指標は固定して、\(\varphi_{k}(x) = e^{ikx} u_k(x)\)となると、
+\begin{align}
+  v & = \ev{\odv{x}{t}} = \ev{\frac{i}{\hbar}\left[ \hat{H} , x \right]}\\
+  & = \frac{i}{\hbar} \int \odif{x} \ e^{-ikx} u^\ast_k\left[ \hat{H}, x \right]e^{ikx} u_k(x)
+\end{align}
+となる。ここで、\(k\)について微分する次の関数を用いるテクニックを用いよう。
+\begin{align}
+  \odv{}{k} \left( e^{-ikx} \hat{H} e^{ikx} \right)& = -ix e^{-ikx} \hat{H} e^{ikx} + e^{-ikx} \hat{H} i x e^{ikx} \\
+  & = i e^{-ikx} \left( \hat{H}x - x \hat{H} \right)e^{ikx} \\
+  & = e^{-ikx} i \left[ \hat{H},x  \right] e^{ikx}
+\end{align}
+となる。
+これを用いて書きなおすとしよう。
+すると、
+\begin{equation}
+  v= \frac{1}{\hbar} \int \odif{x}  u^*_k \odv{}{k} \left( e^{-ikx} \hat{H} e^{ikx} \right)u_k
+\end{equation}
+となる。
+ここから、部分積分を用いると、
+\begin{equation}
+  f \odv{g}{k}h = \odv{}{k} (fgh) - \odv{f}{k}gh - f g \odv{h}{k}
+\end{equation}
+のような関係を用いよう。
 
+この時に、
+\begin{align}
+  x & = \ev{\pdv{x}{t}} \\
+  & = \frac{1}{\hbar} \odv{}{k} \int \odif{x} u_k^* e^{-ikx} \hat{H} e^{ikx} u_k  - \frac{1}{\hbar} \int \odif{x} \odv{u_k^*}{k} e^{-ikx} e^{ikx}u_k - \frac{1}{\hbar} \int \odif{x} u^*_k e^{-ikx} \hat{H} e^{ikx} \odv{u_k}{k} \\
+  & = \frac{1}{\hbar} \odv{\varepsilon_k}{k} - \frac{1}{\hbar} \varepsilon_k \int \odv{u_k^*}{k} u_k - \frac{1}{\hbar} \int u_k^* \odv{u_k}{k} \varepsilon_k\\
+  & = \frac{1}{\hbar} \odv{\varepsilon_k}{k} - \frac{1}{\hbar}\varepsilon_k \odv{}{k} \int u^*_k u_k \odif{x} \\
+  & = \frac{1}{\hbar} \odv{\varepsilon_k}{k}  - \frac{1}{\hbar}\varepsilon_k \odv{}{k} 1\\
+  & = \frac{1}{\hbar} \odv{\varepsilon_k}{k}
+\end{align}
+となるために、
+\begin{equation}
+  v = \frac{1}{\hbar} \odv{\varepsilon_k}{k}
+\end{equation}
+と書ける。
+これを3Dに拡張してあげると、
+\begin{equation}
+  \bm{v} = \frac{1}{\hbar} \nabla_k \varepsilon_k 
+  = 
+  \begin{pmatrix}
+    \pdv{\varepsilon_k}{k_x} \\
+    \pdv{\varepsilon_k}{k_y} \\
+    \pdv{\varepsilon_k}{k_z}
+  \end{pmatrix}
+\end{equation}
+となる。固体の中の速度は群速度の式である。
+
+\paragraph{波束}
+波束について考えると、
+\begin{equation}
+  \varphi_{k_0}(x) = \sum a (k-k_0) e^{i(kx-\omega t)}
+\end{equation}
+となる。\(k_0\)の周りで少しだけ\(k_0\)以外の波を足す。
+ガウス関数を用いると\(a \propto \exp\left( - \frac{(k-k_0)^2}{\Delta k} \right)\)となる。
+
+\begin{equation}
+  \omega = \omega(k)
+\end{equation}
+\(k_0\)の周りで、\(\omega=\omega(k_0) + \pdv{\omega}{k}(k-k_0)=\omega(k_0) + v_g(k-k_0)\)として、
+\begin{equation}
+  \varphi_{k_0}(x,t) = e^{ik_0x - i \omega_0t}\sum_\lambda a(k-k_0) e^{i(k-k_0)(x-v_gt)}
+\end{equation}
+となる。
+
+ここから、
+\begin{equation}
+  \varphi_{k_0}(x) = e^{ik_0x - \omega_0 t} \sum_k a(k-k_0) e^{i(k-k_0)(x-v_g t)}
+\end{equation}
+等となる。
+
+\subsection{運動方程式}
+ここではシュレディンガー方程式を用いよう。
+ここではブロッホ関数で、
+\begin{equation}
+  \Psi(x,t) = e^{-\frac{i \hat{H}t}{\hbar}}\Psi(x,0)
+\end{equation}
+となるために、
+\begin{equation}
+  \hat{H} = \frac{\hat{p}_x^2}{2m} + V(x) - Fx ,\quad - \pdv{V}{x} = F 
+\end{equation}
+\(F\)は定数で\(t\)はとても短くとることとする。
+
+このように置くと、
+\begin{equation}
+  \Psi(x,t) = \exp\left( - \frac{it}{\hbar} \left( \frac{\hat{p}_x^2}{2m} + V(x) -Ft \right) \right)\Psi(x,0)
+\end{equation}
+はブロッホ関数であり、
+\begin{equation}
+  \Psi(x+a,0) = e^{ika}\Psi(x,0)
+\end{equation}
+となる。
+ここから、\(V(x+a)=V(x)\)として、
+\begin{align}
+  \Psi(x+a,t) & = \exp \left( -\frac{it}{\hbar} \left( \frac{\hat{p}^2}{2m} + V(x+a) -F(x+a) \right)\right)\psi(x,0) \\
+  & = \exp \left( -\frac{it}{\hbar} \left( \frac{\hat{p}^2_x}{2m} +V(x) -Fx \right) \right)e^{\frac{i t}{\hbar}Fa} e^{ik_0a}\psi(x,0)\\
+  & = \exp\left( \frac{it}{t}Fa + ik_0a \right)\Psi(x,t)
+\end{align}
+となる。そこで、\(\frac{it}{t}Fa + ik_0a = ik(t)a\)と置いてあげると、
+そのために、
+\begin{equation}
+  k(t) = k_0 + \frac{F}{\hbar}t 
+\end{equation}
+となる。\(t\)は十分短いので、
+\begin{equation}
+  \pdv{k}{t} = \frac{F}{\hbar}
+\end{equation}
+となる。つまり、
+\begin{equation}
+  \odv{\hbar k}{t} = F 
+\end{equation}
+となる。これは平面波\(\odv{p}{t} = F\)とできる。つまりはニュートンの運動方程式は、ブロッホ電子は運動量を\(\hbar k\)と考えてよくこれは波束を得られると、電子の質量を出すことが出来る。
 
 
 
